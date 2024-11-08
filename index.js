@@ -4,7 +4,7 @@ const secondListItem = document.querySelector(".is_there_a_free_version");
 const secondText = document.querySelector(".second_item");
 const thirdListItem = document.querySelector(".can_i_export_my_reports");
 const thirdText = document.querySelector(".third_item");
-
+//
 
 
 
