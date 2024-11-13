@@ -22,15 +22,16 @@ function onChangeHandler(e) {
 }
 
 data.addEventListener('click', () => {
-    onChangeHandler(firstText)
+        onChangeHandler(firstText)
 
 
-    //if (firstItem.style.display == 'none') {
-    //  firstItem.style.display = 'block';
-    //} else {
-    //  firstItem.style.display = ' none';
-    //}
-})
+        //if (firstItem.style.display == 'none') {
+        //  firstItem.style.display = 'block';
+        //} else {
+        //  firstItem.style.display = ' none';
+        //}
+    })
+    //This is the second event for the secondth item of the list in FAQ
 secondListItem.addEventListener('click', () => {
     onChangeHandler(secondText);
 })
