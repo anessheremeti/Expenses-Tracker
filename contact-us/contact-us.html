@@ -12,6 +12,28 @@
             <h1>CONTACT US</h1>
             <p>If you have any questions or suggestions, please contact us!</p>
         </header>
+
+        <form id="contactForm" action="#">
+            <div class="form-field">
+                <label for="name">Full Name: <span class="required">*</span></label>
+                <div class="field">
+                    <input type="text" id="name" placeholder="Write your name and surname" required>
+                </div>
+            </div>
+            <div class="form-field">
+                <label for="email">Email: <span class="required">*</span></label>
+                <div class="field">
+                    <input type="email" id="email" placeholder="Write your email" required>
+                </div>
+            </div>
+            <div class="form-field message">
+                <label for="message">Message: <span class="required">*</span></label>
+                <div class="field">
+                    <textarea id="message" placeholder="Write your message..." required></textarea>
+                </div>
+            </div>
+
+
       
     </div>
     <script src="contact-us.js"></script>
