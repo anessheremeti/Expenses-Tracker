@@ -29,3 +29,9 @@ body {
     padding: 20px 30px;
     border-bottom: 1px solid #ddd;
 }
+.container form {
+    display: flex;
+    flex-direction: column;
+    margin: 35px 30px;
+    gap: 20px; 
+}
