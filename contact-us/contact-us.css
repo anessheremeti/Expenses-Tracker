@@ -59,3 +59,8 @@ form .message textarea {
     border: 1px solid #ddd;
     font-family: inherit; 
 }
+
+form .field input::placeholder, 
+form .message textarea::placeholder {
+    color: #bfbfbf;
+}
