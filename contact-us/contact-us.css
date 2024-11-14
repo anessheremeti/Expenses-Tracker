@@ -64,3 +64,10 @@ form .field input::placeholder,
 form .message textarea::placeholder {
     color: #bfbfbf;
 }
+
+form .field input:focus, 
+form .message textarea:focus {
+    color: #427AA1;
+    border-color: #427AA1;
+    outline: none;
+}
