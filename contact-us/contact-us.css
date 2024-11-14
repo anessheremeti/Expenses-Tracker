@@ -24,3 +24,8 @@ body {
     overflow: auto; 
 }
 
+.container header {
+    text-align: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #ddd;
+}
