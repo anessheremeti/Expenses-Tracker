@@ -13,3 +13,14 @@ body {
     justify-content: center;
     background-color: #427AA1;  
 }
+.container {
+    width: 100%;
+    max-width: 750px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 20px; 
+    overflow: auto; 
+}
+
