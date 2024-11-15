@@ -20,6 +20,23 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = "index.html"; 
         }
 
-
     });
+    inputs.forEach(input => {
+        const label = input.closest(".form-field").querySelector("label");
+        const asterisk = label.querySelector(".required");
+        if (asterisk) {
+            asterisk.style.color = "red"; 
+        }
+
+
+        input.addEventListener("input", function() {
+            if (input.value.trim() === "") {
+                input.style.borderColor = "red";
+            } else {
+                input.style.borderColor = "green";
+            }
+        });
+    });
+
 });
+
