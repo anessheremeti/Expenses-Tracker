@@ -15,7 +15,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-       
+        if (isFormValid) {
+            alert("Your message was submitted successfully!");
+            window.location.href = "index.html"; 
+        }
+
 
     });
 });
