@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, Sans-Serif; 
+}
+
+body {
+    display: flex;
+    padding: 0 10px;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #427AA1;  
+}
+.container {
+    width: 100%;
+    max-width: 750px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 20px; 
+    overflow: auto; 
+}
+
+.container header {
+    text-align: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #ddd;
+}
+.container form {
+    display: flex;
+    flex-direction: column;
+    margin: 35px 30px;
+    gap: 20px; 
+}
+
+form .form-field {
+    display: flex;
+    align-items: center;
+}
+
+form .form-field label {
+    flex: 1;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.form-field .field {
+    flex: 2;
+}
+
+form .field input, 
+form .message textarea {
+    width: 100%;
+    padding: 10px 18px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: inherit; 
+}
+
+form .field input::placeholder, 
+form .message textarea::placeholder {
+    color: #bfbfbf;
+}
+
+form .field input:focus, 
+form .message textarea:focus {
+    color: #427AA1;
+    border-color: #427AA1;
+    outline: none;
+}
+
+form .message {
+    position: relative;
+}
+
+form .message textarea {
+    resize: vertical ;
+    min-height: 55px;
+    max-height: 300px;
+    overflow-y: auto; 
+    padding: 10px 18px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+.button-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-area button {
+    font-size: 14px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #427AA1;
+    padding: 13px 25px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.button-area button:hover {
+    background-color: #355c7d;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .container form {
+        margin: 20px 0;
+    }
+
+    .form-field {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+
+    .button-area button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
