@@ -5,5 +5,17 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         let isFormValid = true;
+
+        inputs.forEach(input => {
+            if (input.value.trim() === "") {
+                input.style.borderColor = "red"; 
+                isFormValid = false;
+            } else {
+                input.style.borderColor = "green"; 
+            }
+        });
+
+       
+
     });
 });
