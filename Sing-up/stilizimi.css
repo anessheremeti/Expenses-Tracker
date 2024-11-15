@@ -28,3 +28,58 @@ body{
   form{
     padding: 30px;
   }
+  input.input{
+    width: 85%;
+    height: 1.8rem;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    border: none;
+    margin-top: 4px;
+    border-radius: 10px;
+    font-size: medium;
+    outline: auto;
+}
+
+ input:not(:placeholder-shown):valid{
+    outline-color: var(--clr-success);
+} 
+input:not(:placeholder-shown):invalid{
+    outline-color: var(--clr-error);
+}
+input:focus:invalid{
+    outline-color: var(--clr-warning);
+}
+:root {
+    --clr-success: green;
+    --clr-error: red;
+    --clr-warning: orange;
+}
+
+.Sign-up-Buton{
+    text-transform: uppercase;
+    width: 70%;
+    padding: 10px;
+    font-size: 15px;
+    color: #fff;
+    background: #064789;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.Sign-up-Buton:hover{
+    background-color: rgb(235, 242, 250);
+    color:  rgb(6, 71, 137);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: 0.4s;
+    cursor: pointer;
+}
+span{
+    margin-top: 7px;
+    color: red;
+    font-size: 13PX;
+    
+}
+
+
+
+
