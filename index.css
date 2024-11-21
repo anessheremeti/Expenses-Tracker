@@ -256,4 +256,28 @@ body {
 .third_item{
     display:none;
 }
+.footer {
+    margin: 0 auto;
+    display: grid;
+    background:#427AA1;
+    align-items: center;
+    align-content: center;
+}
+.footer > p{
+    margin:0 auto;
+    padding:2rem;
+}
+.footer > p > span{
+    color:white;
+}
+@media(max-width:767px){
+    .login_and_signUp{
+        position:relative;
+        padding-top:3.5rem;
+        width:min(120%,15rem);
 
+    }
+    .container{
+        text-wrap:nowrap;
+    }
+}
