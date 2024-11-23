@@ -67,3 +67,14 @@ body {
     color: #033b74;
     font-size: 15px;
 }
+.button {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 30px;
+    background: #427AA1;
+    border: none;
+    cursor: pointer;
+    box-shadow: 6px 19px 15px -2px rgba(47, 86, 113, 0.24)
+}
