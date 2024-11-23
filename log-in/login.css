@@ -48,3 +48,22 @@ body {
 .field input:focus {
     border-color: #427AA1;
 }
+
+.forgot-password {
+    display: flex;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.forgot-password a {
+    color: #215072;
+    text-decoration: none;
+    font-size: 14px;
+
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+    color: #033b74;
+    font-size: 15px;
+}
