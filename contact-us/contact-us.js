@@ -44,9 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
     inputs.forEach(input => {
         const label = input.closest(".form-field").querySelector("label");
         const asterisk = label.querySelector(".required");
-        if (asterisk) {
-            asterisk.style.color = "red"; 
-        }
+      
 
 
         input.addEventListener("input", function() {
