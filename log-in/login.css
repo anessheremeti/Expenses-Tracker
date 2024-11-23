@@ -82,3 +82,13 @@ body {
     background-color: #355c7d;
 
 }
+.signup-text-button {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signup-text-button a {
+    color: #064789;
+    text-decoration: none;
+}
