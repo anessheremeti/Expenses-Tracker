@@ -5,6 +5,7 @@ const secondText = document.querySelector(".second_item");
 const thirdListItem = document.querySelector(".can_i_export_my_reports");
 const thirdText = document.querySelector(".third_item");
 const closeButton = document.querySelector('.close_button');
+const burgerButton = document.querySelector('.burger_menu');
 const sideBar = document.querySelector('.sidebar_item_container');
 console.log(closeButton);
 //
@@ -52,3 +53,16 @@ function onCloseButton(e) {
 closeButton.addEventListener('click', () => {
     onCloseButton(sideBar)
 })
+
+
+function onClickeHandler(e) {
+    if (e.style.display == 'none') {
+        e.style.display = 'flex';
+        isClicked = !isClicked;
+        return;
+    } else {
+        e.style.display = 'none';
+
+        return;
+    }
+}
