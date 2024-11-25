@@ -263,6 +263,9 @@ body {
     align-items: center;
     align-content: center;
 }
+.burger_menu{
+    display: none;
+}
 .footer > p{
     margin:0 auto;
     padding:2rem;
@@ -270,14 +273,67 @@ body {
 .footer > p > span{
     color:white;
 }
-@media(max-width:767px){
-    .login_and_signUp{
-        position:relative;
-        padding-top:3.5rem;
-        width:min(120%,15rem);
+.sidebar_item_container{
+    display: none;
+}
 
+@media(max-width:720px) {
+    .sidebar_item_container{
+        display:flex;
+        flex-direction:column;
+        gap:1.5rem;
+        position:relative;
+         margin:auto;
+         position:fixed;
+         top:0;
+         right:0;
+         background:#064789;         ;
+     }
+     .sidebar_item_container{
+        height:100%;
+     }
+     .close_button{
+        position: absolute;
+        top: 0.3rem;
+     }
+     .close_button svg{
+        fill:White;
+     }
+     .sidebar_content li{
+        width:100%;
+        text-align:center;
+     }
+     .sidebar_content a{
+        width:100%;
+     }
+     .sidebar_content{
+        padding:1rem;
+     }
+     .homee{
+        position:relative;
+        top:5%;
+     }
+     .sidebar_content > li{
+        padding:1rem;
+       
+        align-items: flex-start;
+        justify-items: flex-start;
+        justify-content: flex-start;
+        padding: 1rem;
+     }
+    .item_container  li{
+        display:none;
     }
-    .container{
-        text-wrap:nowrap;
+    .what_our_user_says_container{
+        display:none;
+    }
+    .burger_menu {
+        display:block;
+    }
+    .burger_menu svg{
+        fill:white;
+    }
+    .login_and_signUp{
+        display:none;
     }
 }
