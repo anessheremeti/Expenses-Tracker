@@ -45,5 +45,21 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = ""; 
         }
     });
+    username.addEventListener("input", function() {
+        if (username.value.trim() === "") {
+            username.style.borderColor = "red";
+        } else {
+            username.style.borderColor = "green";
+        }
+    });
 
+    password.addEventListener("input", function() {
+        if (password.value.trim() === "") {
+            password.style.borderColor = "red";
+        } else if (password.value.length <= 8 || password.value.length >= 12) {
+            password.style.borderColor = "red";
+        } else {
+            password.style.borderColor = "green";
+        }
+    });
 });
