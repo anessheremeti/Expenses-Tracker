@@ -221,11 +221,9 @@ body {
     margin:0 auto;
     padding-block-start: 2rem;
     padding-bottom: 2rem;
+    justify-items: center;
 }
-.faq_content{
-    position: relative;
-    left: 36%;
-}
+
 .items{
     background: #EBF2FA;
     padding: 1.5rem;
@@ -278,8 +276,11 @@ body {
 }
 
 @media(max-width:720px) {
+    .upper_content{
+        display:block;
+    }
     .sidebar_item_container{
-        display:flex;
+        display:none;
         flex-direction:column;
         gap:1.5rem;
         position:relative;
@@ -291,6 +292,7 @@ body {
      }
      .sidebar_item_container{
         height:100%;
+        z-index:999;
      }
      .close_button{
         position: absolute;

@@ -55,7 +55,7 @@ closeButton.addEventListener('click', () => {
 })
 
 
-function onClickeHandler(e) {
+function onClickHandler(e) {
     if (e.style.display == 'none') {
         e.style.display = 'flex';
         isClicked = !isClicked;
@@ -66,3 +66,6 @@ function onClickeHandler(e) {
         return;
     }
 }
+burgerButton.addEventListener('click', () => {
+    onClickHandler(sideBar)
+})
