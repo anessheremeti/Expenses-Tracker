@@ -274,7 +274,9 @@ body {
 .sidebar_item_container{
     display: none;
 }
-
+.item_container > a{
+    text-decoration:none;
+}
 @media(max-width:720px) {
     .upper_content{
         display:block;
