@@ -26,10 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
             password.style.borderColor = "red";
             messages.push("Password must be longer than 8 characters.");
             isFormValid = false;
-        } else if (password.value.length >= 12) {
-            password.style.borderColor = "red";
-            messages.push("Password must be less than 12 characters.");
-            isFormValid = false;
         } else {
             password.style.borderColor = "green";
         }
@@ -56,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     password.addEventListener("input", function() {
         if (password.value.trim() === "") {
             password.style.borderColor = "red";
-        } else if (password.value.length <= 8 || password.value.length >= 12) {
+        } else if (password.value.length <= 8) {
             password.style.borderColor = "red";
         } else {
             password.style.borderColor = "green";
