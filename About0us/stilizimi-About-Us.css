@@ -1,0 +1,21 @@
+body{
+    text-wrap: pretty;
+    background-color:rgb(235, 242, 250);
+}
+.Main-conteber{
+    display: flex;
+    background-color: rgb(6, 71, 137);
+    max-width: 90% ;
+    min-width:90% ;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+    border-radius: 20px;
+    color: rgb(235, 242, 250)  ;
+}
+.Abuat-us{
+    display: flex;
+    justify-content: center;
+    color: rgb(6, 71, 137);
+}
+.link{
+    color: rgb(235, 242, 250) ; 
+}
