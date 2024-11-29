@@ -73,7 +73,13 @@ input:focus:invalid{
     transition: 0.4s;
     cursor: pointer;
 }
-span{
+.error{
+    margin-top: 7px;
+    color: red;
+    font-size: 13PX;
+    
+}
+.error-1{
     margin-top: 7px;
     color: red;
     font-size: 13PX;
