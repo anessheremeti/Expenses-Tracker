@@ -34,7 +34,7 @@ body {
     top:0.5rem;
     right:2.5%;
 }
-.login_and_signUp > button {
+.login_and_signUp button {
     text-transform: uppercase;
     padding:0.5rem;
     height: 2.5rem;
@@ -42,6 +42,9 @@ body {
     border-radius: 10px;
     background-color: rgb(6, 71, 137);
     color: rgb(235, 242, 250);
+}
+.login_and_signUp button:hover {
+    cursor: pointer;
 }
 
 .login_and_signUp > button:hover {
