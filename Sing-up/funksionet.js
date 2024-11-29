@@ -12,3 +12,23 @@ document.addEventListener("DOMContentLoaded", function () {
  const email = form.elements["email"].value.trim();
  const password = form.elements["password"].value;
  const confirmPassword = form.elements["Config-password"].value;
+ const error=document.getElementById('error');
+        if(fullName <'0'<'9'){
+            error.innerHTML="Numbers are not accepted";
+            return;
+        }
+        
+
+      
+        
+         // Kontrollon nëse fjalëkalimi dhe konfirmimi i tij përputhen; nëse jo, shfaq mesazhin përkatës dhe ndalon procesin
+        if (password !== confirmPassword) {
+            error.innerHTML="Password is incorrect!";
+            return;
+        }
+    
+        
+        // Kryen dërgimin e formës pasi të gjitha validimet janë të sakta
+        form.submit(); 
+    });
+});
