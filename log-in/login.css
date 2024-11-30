@@ -33,6 +33,10 @@ body {
     margin-bottom: 50px;
 }
 .field {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
     position: relative;
     margin-bottom: 0px;
     
