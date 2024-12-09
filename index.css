@@ -221,12 +221,15 @@ body {
     display:none;
 }
 .faq_container{
+    display:flex;
+    align-items:center;
+    align-content:center;
+    justify-content:center;
     margin:0 auto;
-    padding-block-start: 2rem;
-    padding-bottom: 2rem;
-    justify-items: center;
 }
-
+.faq_content {
+    width:min(100%,25rem);
+}
 .items{
     background: #EBF2FA;
     padding: 1.5rem;
