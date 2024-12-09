@@ -45,7 +45,7 @@ thirdListItem.addEventListener('click', () => {
 
 function onCloseButton(e) {
     if (e.style.display === 'none') {
-        e.style.display = 'flex';
+        e.style.display = 'block';
     } else {
         e.style.display = 'none'
     }
@@ -57,7 +57,7 @@ closeButton.addEventListener('click', () => {
 
 function onClickHandler(e) {
     if (e.style.display == 'none') {
-        e.style.display = 'flex';
+        e.style.display = 'block';
         isClicked = !isClicked;
         return;
     } else {
