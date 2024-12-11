@@ -226,6 +226,7 @@ body {
     align-content:center;
     justify-content:center;
     margin:0 auto;
+    padding:1.3rem;
 }
 .faq_content {
     width:min(100%,25rem);
