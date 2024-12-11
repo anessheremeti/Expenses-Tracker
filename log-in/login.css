@@ -59,7 +59,7 @@ body {
 
 .forgot-password {
     display: flex;
-    margin-bottom: 20px;
+    padding-bottom:1rem;;
     float: right;
 }
 
@@ -73,7 +73,7 @@ body {
 .forgot-password a:hover {
     text-decoration: underline;
     color: #033b74;
-    font-size: 15px;
+    
 }
 .button {
     width: 100%;
