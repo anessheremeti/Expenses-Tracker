@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         let isFormValid = true;
+        
 
         if (fullNameInput.value.trim() === "" || /[0-9]/.test(fullNameInput.value)) {
             fullNameInput.style.borderColor = "red"; 
