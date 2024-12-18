@@ -6,7 +6,7 @@ body {
 .upper_content{
     background:#427AA1;
     align-items: center;
-    padding:1.2rem;
+    padding:0.6rem;
     align-content:center;
     margin:0 auto;
     display:flex;
@@ -19,6 +19,36 @@ body {
     cursor:pointer;
     
 }
+.title h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #4CAF50;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    animation: slideInBounce 2s ease-out;
+}
+@keyframes slideInBounce {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    60% {
+      transform: translateX(10%);
+      opacity: 1;
+    }
+    80% {
+      transform: translateX(-5%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+.upper_content  img {
+    width: min(100%, 3rem);
+}
 .item_container{
    display:flex;
    gap:1.5rem;
@@ -30,8 +60,6 @@ body {
     display: flex;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
-    
-    top:0.5rem;
     right:2.5%;
 }
 .login_and_signUp button {
@@ -213,6 +241,7 @@ body {
 .second_card_content{
     padding:0.7rem;
 }
+
 .title > h1{
     color:black;
     padding-block-start:1rem;
@@ -355,7 +384,7 @@ body {
     .burger_menu {
         display:block;
         position:relative;
-        right:15%;
+        left:58%;
        
     }
     .burger_menu svg{
