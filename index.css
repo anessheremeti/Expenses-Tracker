@@ -318,7 +318,7 @@ body {
 }
 @media(max-width:720px) {
     .upper_content{
-        display:block;
+        display:flex;
     }
     .sidebar_item_container{
         display:none;
@@ -383,13 +383,19 @@ body {
     }
     .burger_menu {
         display:block;
-        position:relative;
-        left:58%;
+        
        
     }
+    .item_container{
+        gap:0;
+        position:unset;
+    }
     .burger_menu svg{
-        fill:white;
-        
+        float: right;
+        fill: white;
+        position: absolute;
+        right: 2rem;
+        top: 2%;
     }
     .login_and_signUp{
         display:none;
