@@ -7,7 +7,7 @@ const thirdText = document.querySelector(".third_item");
 const closeButton = document.querySelector('.close_button');
 const burgerButton = document.querySelector('.burger_menu');
 const sideBar = document.querySelector('.sidebar_item_container');
-console.log(closeButton);
+
 //
 
 
