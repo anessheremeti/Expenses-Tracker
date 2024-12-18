@@ -109,7 +109,7 @@ i{
         width: 75px;
         transition: ease 250ms;
     }
-    span{
+    .leftcontener-content span{
         display: none;
         transition: ease 250ms;
     }
