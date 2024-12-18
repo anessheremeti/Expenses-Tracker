@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             errorElement.style.display = "none";
             alert("Form Submitted Successfully!");
-            window.location.href = ""; 
+            console.log(window.location)
+            window.location.href = "../dashbord/dashbord.html";
         }
     });
     username.addEventListener("input", function() {
