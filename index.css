@@ -48,6 +48,8 @@ body {
 
 .upper_content  img {
     width: min(100%, 3rem);
+    position: relative;
+    left: 3%;
 }
 .item_container{
    display:flex;
@@ -255,7 +257,8 @@ body {
     align-content:center;
     justify-content:center;
     margin:0 auto;
-    padding:1.3rem;
+    padding: 1.5rem;
+    padding-bottom: 2.7rem;
 }
 .faq_content {
     width:min(100%,25rem);
