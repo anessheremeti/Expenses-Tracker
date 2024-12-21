@@ -2,6 +2,96 @@ html,body{
     margin: 0;
     height: 100%;
 }
+.table-container {
+    width: 60%;
+    height: 300px; /* Fixed height */
+    margin: 2rem auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 27.4%;
+    top: 5rem;
+    background-color: white;
+  }
+
+  .table-container:hover {
+    cursor: pointer;
+  }
+
+  .table-scroll {
+    height: 100%;
+    overflow-y: auto; /* Vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border: none;
+  }
+
+  th {
+    background-color: #064789;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0; /* Keeps header visible */
+    z-index: 1;
+  }
+
+  tr:nth-child(even) {
+    background-color: #ebf2fa;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  tr:hover {
+    background-color: #d3e3f3;
+  }
+
+  td {
+    color: #333;
+  }
+
+  td:nth-child(3) {
+    font-weight: bold;
+    text-align: right;
+  }
+
+  td:nth-child(3).positive {
+    color: green;
+  }
+
+  td:nth-child(3).negative {
+    color: red;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
 .contener{
     display: flex;
     width: 100%;
@@ -124,7 +214,12 @@ i{
         transition: ease 250ms;
     }
 }
-
+@media(max-width:500px){
+    table{
+        left:21%;
+        width:min(100%,5rem)
+    }
+}
 
 .rightcontenier{
     flex-grow: 1;
@@ -171,6 +266,9 @@ i{
         object-fit: cover; 
         transition: ease 250ms;
     }
+
+    
+
     
 
 }
