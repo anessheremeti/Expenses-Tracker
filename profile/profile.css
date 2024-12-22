@@ -201,3 +201,61 @@ i{
   color: #6c757d;
   border: 1px solid #ddd;
 }
+.action-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+.action-buttons button {
+  background: #007bff;
+  color: #fff;
+  padding: 10px 80px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+}
+.action-buttons button:hover {
+  background: #0056b3;
+}
+.action-buttons .danger {
+  background: #ff4d4d;
+}
+.action-buttons .danger:hover {
+  background: #cc0000;
+}
+
+@media(max-width:350gipx){
+  .leftcontener{
+      display: none;
+      transition: ease 250ms;
+  }
+  .right-container{
+      margin: 0;
+      transition: ease 250ms;
+  }
+  .uperrbar{
+      display: flex;
+      width: 100%;
+      background-color: #064789;
+      transition: ease 250ms;
+  }
+  .logoja{
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      flex-grow: 1;
+      transition: ease 250ms;
+  }
+  .logoja img {
+      height: 2rem;
+      width: 2rem;
+      border: none;
+      margin-right: 5px;
+      border-radius: 50%;
+      object-fit: cover; 
+      transition: ease 250ms;
+  }
+  
+
+}
