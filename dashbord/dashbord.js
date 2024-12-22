@@ -80,12 +80,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const amount = addfundsform .elements["amaunt-input"].value; // Merr vlerën e shumës
         const source = addfundsform .elements["sourece-input"].value.trim(); // Merr vlerën e burimit
         const config = addfundsform .elements["conf-input"]; // Merr vlerën e konfigurimit
+        const Quantity = WithdrawForm.elements["Quantity-input"].value;
 
         let isValid = true; // Flamuri që tregon nëse forma është valide
 
         // Validim për shumën më të madhe se 7 karaktere
         if (amount > 99999) {
             alert("Gabim: Shuma nuk duhet të jetë më shumë se 7 karaktere!");
+            isValid = false;
+        }
+        if(Quantity > 99){
+            alert("Gabim: Shuma nuk duhet të jetë më shumë se 99!");
             isValid = false;
         }
 
