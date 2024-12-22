@@ -447,6 +447,9 @@ html,body{
         object-fit: cover; 
         transition: ease 250ms;
     }
+    .buton-contener{
+        justify-content: center;
+    }
     
 
 }
