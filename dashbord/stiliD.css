@@ -79,6 +79,13 @@ html,body{
     cursor: pointer;
     transition: ease 250ms;
 }
+.link{
+ 
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+}
 .leftcontener-Boxheti{
     display: flex;
     align-items: center;
