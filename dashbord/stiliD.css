@@ -1,7 +1,30 @@
 html,body{
     margin: 0;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
+
+      /* Ky rregull çaktivizon të gjitha ndërveprimet e përdoruesit
+       (klikime, prekjet, etj.)
+       për çdo element në faqe kur trupi (body) ka klasën blocked.*/
+    
+    body.blocked * {
+      pointer-events: none; /* Çaktivizon klikimet në të gjithë faqen */
+    }
+    
+    /* Lejo ndërveprimin vetëm për contener */
+    /* Ky rregull anulon efektin e pointer-events: none;
+     për disa elemente specifike, 
+    duke lejuar ndërveprimet vetëm me këta elemente dhe përmbajtjen e tyre.*/
+    body.blocked #form-buton-contenerr,
+    body.blocked #form-buton-contener *,
+    body.blocked #Withdraw-contener,
+    body.blocked #Withdraw-contener *{
+      pointer-events: auto; /* Aktivizon klikimet për `contener` */
+    }
 .contener{
     display: flex;
     width: 100%;
@@ -9,6 +32,7 @@ html,body{
     background-color: rgb(187, 207, 229);
     margin: 0;
     padding: 0;
+
 }
 .leftcontener{
     display: flex;
@@ -41,7 +65,8 @@ html,body{
     width: 4rem;
     border: none;
     border-radius: 50%;
-    object-fit: cover; 
+    object-fit: cover;
+    mix-blend-mode: color-burn; 
     transition: ease 250ms;   
 }
 .leftcontener-Profili{
@@ -98,11 +123,14 @@ html,body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: ease 250ms;
 }
-i{
-    color: black;
+.leftcontener i{
+    color: white;
     float: left;
     padding: 0.5rem;
-
+    
+}
+.leftcontener-Profili:hover i,.leftcontener-Boxheti:hover i,.leftcontener-transactionet:hover i,.leftcontener-raporti:hover i{
+    color: #064789;
 }
 @media(max-width:1024px){
     .leftcontener{
@@ -139,6 +167,233 @@ i{
     display: none;
     transition: ease 250ms;
 }
+.main-contener{
+    display: flex;
+    flex-direction: column;
+    padding:0 10%;
+    width: 80%;
+    justify-items: center;
+    align-items:center ;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+.title-contener{
+   display: flex;
+   width:100%;
+   justify-content: center;
+   align-items: center;
+   padding: 2rem;
+   color:  #064789;;
+   
+}
+.title-contener i{
+    color:  #064789;
+}
+/*pjesa e shfaqjes se numrave*/
+.balanc-contener{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(66, 122, 161) ;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+.balanc-contener span{
+    padding: 1rem;
+}
+.balanci{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.shpenzie-teArdhurat{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+}
+.Shpenzimet{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%; /* Përcakto një gjerësi që përshtatet me wrap */
+    min-width: 200px;
+    color: rgb(138, 1, 1);
+    
+}
+.teArdhurat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%; /* Përcakto një gjerësi që përshtatet me wrap */
+    min-width: 200px;
+    color: rgb(1, 90, 1);
+    
+}
+/*pjesa e butonave per withdraw addfonds dhe outlay*/
+.buton-contener{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+.buton-contener div{
+    display: flex;
+    justify-content: center;
+    min-width: 200px;
+    padding: 2rem;
+}
+.buton-contener button{
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-transform: capitalize;
+    background-color: rgb(66, 122, 161);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    width: 150px;
+    cursor: pointer;
+}
+/*addfonds contener eshte ky*/
+.form-buton-contener{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:1.5rem 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #064789 ;
+    height: 20rem;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.9);
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    color: white;
+    border: none;
+    border-radius: 20px;
+  }
+  .form-buton-contener label{
+    padding: 0.5rem;
+  }
+  i.fa-solid.fa-x{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .form-buton-contener input{
+    font-size: 1rem;
+    padding: 0.3rem;
+    outline: white;
+    border:none ;
+    border-radius: 20px;
+  }
+  input[type="checkbox"]{
+    background-color: white;
+    cursor: pointer;
+  }
+  .form-buton-contener button{
+    font-size:1rem ;
+    padding:  0.4rem 0.6rem;
+    text-transform: capitalize;
+    color: rgb(66, 122, 161) ;
+    border: none;
+    border-radius:20px ;
+    background-color: white;
+    margin-top: 5px;
+    width: 195px;
+    transition: 250ms;
+    cursor: pointer;
+  }
+  .form-buton-contener button:hover{
+    background-color: rgb(66, 122, 161) ;
+    color: white;
+    transition: 250ms;
+  
+  }/* blluri*/
+.overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ngjyrë e zezë transparente */
+    backdrop-filter: blur(5px); /* Efekti i turbullimit */
+    justify-content: center;
+    align-items: center;
+}
+/*pjesa e butonit withdraw kur te klokohet*/
+.Withdraw-contener{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:1.5rem 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #064789 ;
+    height: 20rem;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.9);
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+.Withdraw-contener label{
+    padding: 0.5rem;
+  }
+  i.fa-solid.fa-x{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .Withdraw-contener input{
+    font-size: 1rem;
+    padding: 0.3rem;
+    outline: white;
+    border:none ;
+    border-radius: 20px;
+  }
+  .Withdraw-contener button{
+    font-size:1rem ;
+    padding:  0.4rem 0.6rem;
+    text-transform: capitalize;
+    color: rgb(66, 122, 161) ;
+    border: none;
+    border-radius:20px ;
+    background-color: white;
+    margin-top: 5px;
+    width: 195px;
+    transition: 250ms;
+    cursor: pointer;
+  }
+  .Withdraw-contener button:hover{
+    background-color: rgb(66, 122, 161) ;
+    color: white;
+    transition: 250ms;
+  
+  }
+
+/*responzivi i telefonit*/
 
 @media(max-width:417px){
     .leftcontener{
@@ -155,9 +410,15 @@ i{
         background-color: #064789;
         transition: ease 250ms;
     }
+    .uperrbar i{
+        color: white;
+        padding:5px;
+        width: 30px;
+    }
     .logoja{
         display: flex;
-        justify-content: end;
+        justify-content: start;
+        padding-left: 3px;
         align-items: center;
         flex-grow: 1;
         transition: ease 250ms;
@@ -173,4 +434,31 @@ i{
     }
     
 
+}
+
+/* pjesa e hamburger kontener kur te behet ne telefon*/
+.hamburger-contener{
+    display: none;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #064789;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    z-index: 1;
+    transition: ease 250ms;
+}
+.hamburger-contener div{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem  0;
+}
+.hamburger-contener-Profili:hover , .hamburger-contener-Boxheti:hover , .hamburger-contener-transactionet:hover , .hamburger-contener-raporti:hover  {
+    background-color:white ;
+    color: #064789;
 }
