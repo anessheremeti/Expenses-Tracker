@@ -103,6 +103,14 @@ html,body{
     cursor: pointer;
     transition: ease 250ms;
 }
+.leftcontener-transactionet a{
+    color:White;
+    text-decoration:none;
+}
+.leftcontener-transactionet span{
+    position: relative;
+    top:0.2rem;
+}
 .leftcontener-raporti{
     display: flex;
     align-items: center;
