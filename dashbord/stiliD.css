@@ -84,13 +84,7 @@ html,body{
     cursor: pointer;
     transition: ease 250ms;
 }
-.link{
- 
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
 
-}
 .leftcontener-Boxheti{
     display: flex;
     align-items: center;
@@ -102,6 +96,7 @@ html,body{
     border-left: 0px;
     cursor: pointer;
     transition: ease 250ms;
+    background-color: #042f5a;
 }
 .leftcontener-transactionet{
     display: flex;
@@ -115,10 +110,7 @@ html,body{
     cursor: pointer;
     transition: ease 250ms;
 }
-.leftcontener-transactionet a{
-    color:White;
-    text-decoration:none;
-}
+
 .leftcontener-transactionet span{
     position: relative;
     top:0.2rem;
@@ -134,6 +126,13 @@ html,body{
     border-left: 0px;
     cursor: pointer;
     transition: ease 250ms;
+}
+.link{
+ 
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
 }
 .leftcontener-Profili:hover,.leftcontener-Boxheti:hover,.leftcontener-transactionet:hover,.leftcontener-raporti:hover{
     background-color: white;

@@ -167,6 +167,7 @@ html,body{
     border-left: 0px;
     cursor: pointer;
     transition: ease 250ms;
+    background-color: #042f5a;
 }
 .leftcontener-raporti{
     display: flex;
@@ -179,6 +180,13 @@ html,body{
     border-left: 0px;
     cursor: pointer;
     transition: ease 250ms;
+}
+.link{
+ 
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
 }
 .leftcontener-Profili:hover,.leftcontener-Boxheti:hover,.leftcontener-transactionet:hover,.leftcontener-raporti:hover{
     background-color: white;

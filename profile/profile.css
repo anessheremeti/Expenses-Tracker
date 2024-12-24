@@ -94,6 +94,13 @@ html,body{
   cursor: pointer;
   transition: ease 250ms;
 }
+.link{
+ 
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+}
 .leftcontener-Profili:hover,.leftcontener-Boxheti:hover,.leftcontener-transactionet:hover,.leftcontener-raporti:hover{
   background-color: white;
   color: #064789;
