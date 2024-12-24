@@ -1,0 +1,139 @@
+html,body{
+    margin: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .contener{
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgb(187, 207, 229);
+    margin: 0;
+    padding: 0;
+  
+  }
+  .leftcontener{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #064789;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    transition: ease 250ms;
+    
+  }
+  
+  .leftcontener-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+  }
+  .leftcontener-llogoja{
+    display: flex;
+    justify-content: center;
+    padding:10% 0;
+    transition: ease 250ms;
+  }
+  .leftcontener-llogoja img{
+    height: 4rem;
+    width: 4rem;
+    border: none;
+    border-radius: 50%;
+    object-fit: cover; 
+    transition: ease 250ms;   
+  }
+  .leftcontener-Profili{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    border: solid white;
+    border-left: 0px;
+    cursor: pointer;
+    transition: ease 250ms;
+    
+  }
+  
+  .leftcontener-Boxheti{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    height: 5rem;
+    border: solid white;
+    border-top: 2px;
+    border-left: 0px;
+    cursor: pointer;
+    transition: ease 250ms;
+  }
+  .leftcontener-transactionet{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    height: 5rem;
+    border: solid white;
+    border-top: 2px;
+    border-left: 0px;
+    cursor: pointer;
+    transition: ease 250ms;
+  }
+  .leftcontener-raporti{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    height: 5rem;
+    border: solid white;
+    border-top: 2px;
+    border-left: 0px;
+    cursor: pointer;
+    transition: ease 250ms;
+    background-color: #042f5a;
+  }
+  .link{
+ 
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+}
+  .leftcontener-Profili:hover,.leftcontener-Boxheti:hover,.leftcontener-transactionet:hover,.leftcontener-raporti:hover{
+    background-color: white;
+    color: #064789;
+    border: solid #064789;
+    border-left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: ease 250ms;
+  }
+  i{
+    color: black;
+    float: left;
+    padding: 0.5rem;
+  
+  }
+  @media(max-width:1024px){
+    .leftcontener{
+        width: 75px;
+        transition: ease 250ms;
+    }
+    .leftcontener-content span{
+        display: none;
+        transition: ease 250ms;
+    }
+    .leftcontener-llogoja img{
+        height: 2.5rem;
+        width: 2.5rem;
+        transition: ease 250ms;
+    }
+    .leftcontener-content  div {
+        justify-content: center;
+        font-size: 30px;
+        transition: ease 250ms;
+    }
+  }
+  
