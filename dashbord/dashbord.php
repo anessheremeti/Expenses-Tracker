@@ -28,12 +28,12 @@
                 <div class="leftcontener-Boxheti">
                     <i class="fas fa-wallet"></i><span>wallet</span>
                 </div>
-                <a href="../Transcation/Transcation.html" class="link">
+                <a href="../Transcation/Transcation.php" class="link">
                 <div class="leftcontener-transactionet">
                     <i class="fas fa-exchange-alt"></i><span>Transactions</span>
                 </div>
             </a>
-            <a href="../user-reports/report.html" class="link">
+            <a href="../user-reports/report.php" class="link">
                 <div class="leftcontener-raporti">
                     <i class="fas fa-chart-line"></i><span>Report</span>
                 </div>
