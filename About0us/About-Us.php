@@ -11,7 +11,7 @@
 <body>
     <div>
     <!-- PJESA ESHTUAR -->
-        <a href="/index.php">
+        <a href="../index.php">
             <button><i class="fas fa-arrow-left"></i></button>
         </a>
         <div class="Abuat-us" ><h1>About Us</h1></div>
