@@ -16,7 +16,7 @@
         <div class="leftcontener">
             <div class="leftcontener-content">
                 <div class="leftcontener-llogoja">
-                    <img src="/assets/img/logoo.png" alt="">
+                    <img src="../assets/img/logoo.png" alt="">
                 </div>
                 <a href="../profile/profile.php" class="link">
                 <div class="leftcontener-Profili">
@@ -44,7 +44,7 @@
 
             <div class="uperrbar">
                 <div class="logoja">
-                    <img src="/assets/img/logoo.png" alt="">
+                    <img src="../assets/img/logoo.png" alt="">
                 </div>
                 <i class="fa-solid fa-bars" id="hamburgerlogo" style="font-size: 30px; cursor: pointer;"></i>
 
