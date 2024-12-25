@@ -18,7 +18,7 @@
                 <div class="leftcontener-llogoja">
                     <img src="/assets/img/logoo.png" alt="">
                 </div>
-                <a href="../profile/profile.html" class="link">
+                <a href="../profile/profile.php" class="link">
                 <div class="leftcontener-Profili">
                     <i class="fas fa-user"></i><span>Profile</span>
                 </div>

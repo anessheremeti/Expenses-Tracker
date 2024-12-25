@@ -25,11 +25,11 @@
             <div class="forgot-password">
                 <a href="#">Forgot Password?</a>
             </div>
-
+           
             <button type="submit" class="button">Log In</button>
     
             <div id="error"></div>
-            <p class="signup-text-button">Don't have an account? <a href="../Sing-up/sing-up.html">Sign Up</a></p>
+            <p class="signup-text-button">Don't have an account? <a href="../Sing-up/sing-up.php">Sign Up</a></p>
         </form>
     </div>
     <script src="login.js"></script>

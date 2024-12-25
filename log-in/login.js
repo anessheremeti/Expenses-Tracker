@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
             errorElement.style.display = "none";
             alert("Form Submitted Successfully!");
             console.log(window.location)
-            window.location.href = "../dashbord/dashbord.html";
+            window.location.href = "../dashbord/dashbord.php";
         }
     });
     username.addEventListener("input", function() {
