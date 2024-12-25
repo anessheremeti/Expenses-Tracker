@@ -1,6 +1,23 @@
+*{
+    overflow: hidden;
+}
+
 body{
     text-wrap: pretty;
     background-color:rgb(235, 242, 250);
+}
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    position:absolute;
+    top:0;
+    left: 0;
+    border:none;
+    border-radius:0 0 10px 0 ;
+    background-color:rgb(6, 71, 137);
+    color: white
 }
 .Main-conteber{
     display: flex;
