@@ -41,18 +41,18 @@
             <div class="sidebar_item_container">
                 <div class="sidebar_content">
 
-                    <a href="/index.html">
+                    <a href="/index.php">
                         <li>Home</li>
                     </a>
-                    <a href="./About0us/About-Us.html">
+                    <a href="./About0us/About-Us.php">
                         <li>About Us</li>
                     </a>
 
-                    <a href="./contact-us//contact-us.html">
+                    <a href="./contact-us/contact-us.php">
                         <li>Contact us</li>
                     </a>
 
-                    <a href="./features/features.html">
+                    <a href="./features/features.php">
                         <li>Features</li>
                     </a>
                     <div class="close_button">
@@ -63,10 +63,10 @@
 
             <!--Log and Sign up Buttons-->
             <div class="login_and_signUp">
-                <a href="log-in/login.html">
+                <a href="log-in/login.php">
                     <button>Log in</button>
                 </a>
-                <a href="./Sing-up/sing-up.html">
+                <a href="./Sing-up/sing-up.php">
                     <button>Sign Up</button>
                 </a>
             </div>
@@ -121,10 +121,10 @@
             <section class="contener">
                 <div class="slider-wrapper">
                     <div class="slider">
-                        <img id="slide-1" src="./imazhet/austin-distel-DfjJMVhwH_8-unsplash.jpg" alt="">
-                        <img id="slide-2" src="./imazhet/towfiqu-barbhuiya-joqWSI9u_XM-unsplash.jpg" alt="">
-                        <img id="slide-3" src="./imazhet/ibrahim-rifath-OApHds2yEGQ-unsplash.jpg" alt="">
-                        <img id="slide-4" src="./imazhet/stephen-dawson-qwtCeJ5cLYs-unsplash.jpg" alt="">
+                        <img id="slide-1" src="./assets/img/austin-distel-DfjJMVhwH_8-unsplash.jpg" alt="">
+                        <img id="slide-2" src="./assets/img/towfiqu-barbhuiya-joqWSI9u_XM-unsplash.jpg" alt="">
+                        <img id="slide-3" src="./assets/img/ibrahim-rifath-OApHds2yEGQ-unsplash.jpg" alt="">
+                        <img id="slide-4" src="./assets/img/stephen-dawson-qwtCeJ5cLYs-unsplash.jpg" alt="">
                     </div>
                     <div class="slider-nav">
                         <a href="#slide-1"></a>
@@ -206,7 +206,7 @@
         </div>
     </div>
     <script src="/index.js"></script>
-    <script src="/fuSllajder.js"></script>
+
 </body>
 
 </html>
