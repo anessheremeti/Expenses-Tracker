@@ -22,14 +22,14 @@
                 <a href="/index.html">
                     <li>Home</li>
                 </a>
-                <a href="./About0us/About-Us.html">
+                <a href="./About0us/About-Us.php">
                     <li>About us</li>
                 </a>
-                <a href="./contact-us/contact-us.html">
+                <a href="./contact-us/contact-us.php">
                     <li>Contact us</li>
                 </a>
 
-                <a href="./features/features.html">
+                <a href="./features/features.php">
                     <li>Features</li>
                 </a>
                 <div class="burger_menu">
