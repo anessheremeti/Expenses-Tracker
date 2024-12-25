@@ -38,7 +38,37 @@
             </div>
             
         </div>
-     
-
+        <div class="right-container">
+        <div class="report-container">
+            <h1>Report Overview</h1>
+            
+            <table class="summary-table">
+              <tr>
+                <td>Total Income</td>
+                <td class="income">$2000</td>
+              </tr>
+              <tr>
+                <td>Total Expenses</td>
+                <td class="expenses">$1000</td>
+              </tr>
+              <tr>
+                <td>Current Balance</td>
+                <td>$500</td>
+              </tr>
+            </table>
+            <button class="find-average-btn" onclick="openModal()">Find Average</button>
+            </div>
+            <div class="modal" id="averageModal">
+                <div class="modal-content">
+                    <h2>Average Report</h2>
+                    <p id="daily-average">Daily Average: Calculating...</p>
+                    <p id="monthly-average">Monthly Average: Calculating...</p>
+                    <p id="yearly-average">Yearly Average: Calculating...</p>
+                    <button class="close-modal" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+        
+        </div>
+ <script src="./report.js" ></script>
 </body>
 </html>
