@@ -5,14 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="contact-us.css">
+    
 </head>
 <body>
+<div class="upper_content">
+            <!--Pjesa e Navbar-->
+            <img class="logo" src="../assets/img/logoo.png" />
+            <div class="item_container">
+
+                <a href="../index.php">
+                    <li>Home</li>
+                </a>
+                <a href="./About0us/About-Us.php">
+                    <li>About us</li>
+                </a>
+                <a href="./contact-us/contact-us.php">
+                    <li>Contact us</li>
+                </a>
+
+                <a href="./features/features.php">
+                    <li>Features</li>
+                </a>
+                <div class="burger_menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+                </div>
+            </div>
+
+
+            <div class="sidebar_item_container">
+                <div class="sidebar_content">
+
+                    <a href="/index.php">
+                        <li>Home</li>
+                    </a>
+                    <a href="./About0us/About-Us.php">
+                        <li>About Us</li>
+                    </a>
+
+                    <a href="./contact-us/contact-us.php">
+                        <li>Contact us</li>
+                    </a>
+
+                    <a href="./features/features.php">
+                        <li>Features</li>
+                    </a>
+                    <div class="close_button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                    </div>
+                </div>
+            </div>
     
     <div class="container">
         <header>
             <h1>CONTACT US</h1>
             <p>If you have any questions or suggestions, please contact us!</p>
         </header>
+       
       
         <form id="contactForm" action="#">
             <div class="form-field">
