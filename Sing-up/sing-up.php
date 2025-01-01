@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +11,7 @@
 </head>
 <body>
     <div class="contener">
-    
-        <form action="" id="signupForm">
+        <form action="../register/register.php" method="post" id="signupForm">
             <div class="contener2" >
                 <h2>SIGN-UP</h2>
             </div>
@@ -48,15 +40,13 @@
                 <br>
             </div>
             <div class="contener2">
-                <button type="submit" class="Sign-up-Buton">Sign-Up</button>
+                <button type="submit" class="Sign-up-Buton" name="signUp">Sign-Up</button>
             </div>
         </form>
     </div>
     
    
-<script src="funksionet.js"></script>
+<!-- <script src="funksionet.js"></script> -->
 </body>
 </html>
     
-</body>
-</html>
