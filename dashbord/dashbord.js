@@ -1,34 +1,35 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     // Kodi këtu ekzekutohet vetëm pasi të jetë ngarkuar struktura HTML
     //add fonds
     const addfundsform = document.getElementById('add-funds-form');
     const Addfonds = document.getElementById('Addfonds');
     const formButonContener = document.getElementById('form-buton-contener');
     const addFondsDelet = document.getElementById('add-funds-delet');
-    const outlay=document.getElementById('outlay');
+    const outlay = document.getElementById('outlay');
     //widthdraw
-    const WithdrawForm=document.getElementById('Withdraw-form');
-    const WithdrawContener=document.getElementById('Withdraw-contener');
-    const Withdraw=document.getElementById('Withdraw');
-    const WithdrawDelet=document.getElementById('WithdrawDelet');
+    const WithdrawForm = document.getElementById('Withdraw-form');
+    const WithdrawContener = document.getElementById('Withdraw-contener');
+    const Withdraw = document.getElementById('Withdraw');
+    const WithdrawDelet = document.getElementById('WithdrawDelet');
 
-    Withdraw.addEventListener("click" , function(){
-        WithdrawContener.style.display="flex";
-        outlay.style.display="flex";
+    Withdraw.addEventListener("click", function() {
+        WithdrawContener.style.display = "flex";
+        outlay.style.display = "flex";
         document.body.classList.add("blocked");
     });
-    WithdrawDelet.addEventListener("click" , function() {
-        WithdrawContener.style.display="none";
-        outlay.style.display="none";
-        document.body.classList.remove("blocked");
-    })
-    // Event handler për dërgimin e formës
-    WithdrawForm .addEventListener('submit', function (e) {
+    WithdrawDelet.addEventListener("click", function() {
+            WithdrawContener.style.display = "none";
+            outlay.style.display = "none";
+            document.body.classList.remove("blocked");
+        })
+        // Event handler për dërgimin e formës
+    WithdrawForm.addEventListener('submit', function(e) {
         e.preventDefault(); // Parandalon sjelljen default të formës
 
-        const amount = WithdrawForm .elements["amaunt-input"].value; // Merr vlerën e shumës
-        const discription = WithdrawForm .elements["Discription-input"].value.trim(); // Merr vlerën e burimit
-        const config = WithdrawForm .elements["conf-input"]; // Merr vlerën e konfigurimit
+        const amount = WithdrawForm.elements["amaunt-input"].value; // Merr vlerën e shumës
+        const discription = WithdrawForm.elements["Description-input"].value.trim(); // Merr vlerën e burimit
+        console.log(discription);
+        const config = WithdrawForm.elements["conf-input"]; // Merr vlerën e konfigurimit
 
         let isValid = true; // Flamuri që tregon nëse forma është valide
 
@@ -47,39 +48,39 @@ document.addEventListener("DOMContentLoaded", function () {
         // Nëse validimi është në rregull, dërgo formën
         if (isValid) {
             alert("Të dhënat u shtuan me sukses!");
-            addfundsform .submit(); // Dërgon formën manualisht
+            addfundsform.submit(); // Dërgon formën manualisht
         }
     });
 
 
 
     // Hapja e formës //add fonds
-    Addfonds.addEventListener("click", function () {
+    Addfonds.addEventListener("click", function() {
         formButonContener.style.display = "flex";
-        outlay.style.display="flex";
+        outlay.style.display = "flex";
         document.body.classList.add("blocked");
-        
+
     });
 
     // Mbyllja e formës
-    addFondsDelet.addEventListener("click", function () {
+    addFondsDelet.addEventListener("click", function() {
         formButonContener.style.display = "none";
-        outlay.style.display="none";
+        outlay.style.display = "none";
         document.body.classList.remove("blocked");
     });
 
     // Parandalimi i klikimeve jashtë formës
-    formButonContener.addEventListener("click", function (e) {
+    formButonContener.addEventListener("click", function(e) {
         e.stopPropagation(); // Parandalon klikimet jashtë container
     });
 
     // Event handler për dërgimin e formës
-    addfundsform .addEventListener('submit', function (e) {
+    addfundsform.addEventListener('submit', function(e) {
         e.preventDefault(); // Parandalon sjelljen default të formës
 
-        const amount = addfundsform .elements["amaunt-input"].value; // Merr vlerën e shumës
-        const source = addfundsform .elements["sourece-input"].value.trim(); // Merr vlerën e burimit
-        const config = addfundsform .elements["conf-input"]; // Merr vlerën e konfigurimit
+        const amount = addfundsform.elements["amaunt-input"].value; // Merr vlerën e shumës
+        const source = addfundsform.elements["sourece-input"].value.trim(); // Merr vlerën e burimit
+        const config = addfundsform.elements["conf-input"]; // Merr vlerën e konfigurimit
 
         let isValid = true; // Flamuri që tregon nëse forma është valide
 
@@ -98,19 +99,19 @@ document.addEventListener("DOMContentLoaded", function () {
         // Nëse validimi është në rregull, dërgo formën
         if (isValid) {
             alert("Të dhënat u shtuan me sukses!");
-            addfundsform .submit(); // Dërgon formën manualisht
+            addfundsform.submit(); // Dërgon formën manualisht
         }
     });
-    const hamburgerlogo=document.getElementById('hamburgerlogo');
-    const rightcontenier=document.getElementById('rightcontenier');
-    const hamburgerContener=document.getElementById('hamburger-contener');
-    const hamburgerContenerDelet=document.getElementById('hamburger-contener-delet');
-    hamburgerlogo.addEventListener("click" , function(){
-        rightcontenier.style.display="none";
-        hamburgerContener.style.display="flex";
+    const hamburgerlogo = document.getElementById('hamburgerlogo');
+    const rightcontenier = document.getElementById('rightcontenier');
+    const hamburgerContener = document.getElementById('hamburger-contener');
+    const hamburgerContenerDelet = document.getElementById('hamburger-contener-delet');
+    hamburgerlogo.addEventListener("click", function() {
+        rightcontenier.style.display = "none";
+        hamburgerContener.style.display = "flex";
     })
-    hamburgerContenerDelet.addEventListener("click" , function(){
-        rightcontenier.style.display="";
-        hamburgerContener.style.display="none";
+    hamburgerContenerDelet.addEventListener("click", function() {
+        rightcontenier.style.display = "";
+        hamburgerContener.style.display = "none";
     })
 });
