@@ -32,7 +32,7 @@
             <p class="signup-text-button">Don't have an account? <a href="../Sing-up/sing-up.php">Sign Up</a></p>
         </form>
     </div>
-     <!-- <script src="login.js"></script>  -->
+    <script src="login.js"></script> 
 </body>
 
 </html>

@@ -11,7 +11,8 @@
 </head>
 <body>
     <div class="contener">
-        <form action="../register/register.php" method="post" id="signupForm">
+        <form action="../register/register.php" method="POST" id="signupForm">
+        <input type="hidden" name="signUP" />
             <div class="contener2" >
                 <h2>SIGN-UP</h2>
             </div>
@@ -46,7 +47,7 @@
     </div>
     
    
-<!-- <script src="funksionet.js"></script> -->
+ <script src="funksionet.js"></script> 
 </body>
 </html>
     

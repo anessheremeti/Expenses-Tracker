@@ -1,7 +1,7 @@
 <?php
 include '../database.php';
 
-if(isset($_POST['signUp'])){
+if(isset($_POST['signUP'])){
     echo "Sign Up button clicked<br>";
     $fulltName=trim($_POST['full-name']);
     $userName =trim($_POST['name']);   
@@ -16,7 +16,7 @@ if(isset($_POST['signUp'])){
     }
     else{
         echo"    aaaaaaaaaaaaa";
-        $insertQuery="INSERT INTO users( fullname ,name,email,password)
+        $insertQuery="INSERT INTO users( fullname ,`name`,email,`password`)
                         VALUES ('$fulltName' , '$userName' , '$email','$password')";
 
                         if($conn->query( $insertQuery)==TRUE){
