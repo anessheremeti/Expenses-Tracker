@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Merr vlerat e inputeve
         const fullName = form.elements["full-name"].value.trim();
+       
         const password = form.elements["password"].value;
+        console.log(password);
         const confirmPassword = form.elements["Config-password"].value;
 
         let isValid = true; // Flamuri që tregon nëse forma është valide
