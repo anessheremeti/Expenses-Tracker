@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const inputs = form.querySelectorAll("input[required]");
 
     form.addEventListener("submit", function(event) {
-        event.preventDefault();
+       // event.preventDefault();
         let isFormValid = true;
         let messages = [];
 
