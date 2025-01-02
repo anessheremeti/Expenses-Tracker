@@ -4,7 +4,9 @@ include '../database.php';
 if (isset($_POST["addfunds"])) {
     // Sanitize and validate inputs
     $amount = mysqli_real_escape_string($conn, $_POST["amount"]);
-    $source = mysqli_real_escape_string($conn, $_POST["source"]);
+    
+    $source =  isset($_POST["confirm"]) ? mysqli_real_escape_string($conn, $_POST["source"]) : '';
+    echo $source;
     $confirm = isset($_POST["confirm"]) ? 1 : 0; 
     $date = mysqli_real_escape_string($conn, $_POST["date"]);
 
@@ -13,7 +15,7 @@ if (isset($_POST["addfunds"])) {
 
     if ($stmt) {
        
-        $stmt->bind_param("diss", $amount, $source, $confirm, $date);
+        $stmt->bind_param('ssss', $amount, $source, $confirm, $date);
 
         if ($stmt->execute()) {
             echo "<script> alert('Data Inserted Successfully'); </script>";
@@ -26,10 +28,10 @@ if (isset($_POST["addfunds"])) {
         echo "<script> alert('Error preparing statement: " . $conn->error . "'); </script>";
     }
 }
-if (isset($_POST["addfunds"])) {
+if (isset($_POST["addItem"])) {
     // Sanitize and validate inputs
     $amount = mysqli_real_escape_string($conn, $_POST["amount"]);
-    $description = mysqli_real_escape_string($conn, $_POST["description"]);
+    $description = isset($_POST["description"]) && is_string($_POST["description"]) ? mysqli_real_escape_string($conn, $_POST["description"]) : ''; // Fallback to empty string
     $confirm = isset($_POST["confirm"]) ? 1 : 0; // Handle checkbox as boolean
     $date = mysqli_real_escape_string($conn, $_POST["date"]);
 
@@ -38,7 +40,7 @@ if (isset($_POST["addfunds"])) {
 
     if ($stmt) {
        
-        $stmt->bind_param("diss", $amount, $description, $confirm, $date);
+        $stmt->bind_param( 'ssss',$amount, $description, $confirm, $date);
 
         if ($stmt->execute()) {
             echo "<script> alert('Data Inserted Successfully'); </script>";
@@ -156,7 +158,7 @@ if (isset($_POST["addfunds"])) {
 
             <form method="POST" action="./dashbord.php" id="Withdraw-form">
                 <div class="Withdraw-contener" id="Withdraw-contener">
-                <input type="hidden" name="addfunds"  />
+                <input type="hidden" name="addItem"  />
                     <i class="fa-solid fa-x" id="WithdrawDelet"></i>
                     <label>Amount</label>
                     <input id="amaunt-input" name ="amount"type="number" min="1" required>

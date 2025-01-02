@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function() {
     WithdrawForm.addEventListener('submit', function(e) {
         e.preventDefault(); // Parandalon sjelljen default të formës
 
-        const amount = WithdrawForm.elements["amaunt-input"].value; // Merr vlerën e shumës
-        const discription = WithdrawForm.elements["Description-input"].value.trim(); // Merr vlerën e burimit
-        console.log(discription);
-        const config = WithdrawForm.elements["conf-input"]; // Merr vlerën e konfigurimit
+        const amount = document.getElementById("amaunt-input").value; // Merr vlerën e shumës
+        const description = document.getElementById("Description-input").value.trim(); // Merr vlerën e burimit
+
+        const config = document.getElementById("conf-input"); // Merr vlerën e konfigurimit
 
         let isValid = true; // Flamuri që tregon nëse forma është valide
 
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Nëse validimi është në rregull, dërgo formën
         if (isValid) {
             alert("Të dhënat u shtuan me sukses!");
-            addfundsform.submit(); // Dërgon formën manualisht
+            WithdrawForm.submit(); // Dërgon formën manualisht
         }
     });
 
@@ -100,6 +100,35 @@ document.addEventListener("DOMContentLoaded", function() {
         if (isValid) {
             alert("Të dhënat u shtuan me sukses!");
             addfundsform.submit(); // Dërgon formën manualisht
+        }
+    });
+    WithdrawForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Parandalon sjelljen default të formës
+
+        const amount = document.getElementById("amaunt-input").value; // Merr vlerën e shumës
+        console.log(amount);
+        const description = document.getElementById("Description-input").value.trim(); // Merr vlerën e burimit
+        console.log(description);
+        const config = addfundsform.elements["conf-input"]; // Merr vlerën e konfigurimit
+
+        let isValid = true; // Flamuri që tregon nëse forma është valide
+
+        // Validim për shumën më të madhe se 7 karaktere
+        if (amount > 99999) {
+            alert("Gabim: Shuma nuk duhet të jetë më shumë se 7 karaktere!");
+            isValid = false;
+        }
+
+        const regex = /^[a-zA-Z]+$/;
+        if (!regex.test(description)) {
+            alert("Gabim: Burimi përmban karaktere të tjera përveç shkronjave!");
+            isValid = false;
+        }
+
+        // Nëse validimi është në rregull, dërgo formën
+        if (isValid) {
+            alert("Të dhënat u shtuan me sukses!");
+            WithdrawForm.submit(); // Dërgon formën manualisht
         }
     });
     const hamburgerlogo = document.getElementById('hamburgerlogo');
