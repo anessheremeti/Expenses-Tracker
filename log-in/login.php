@@ -17,7 +17,7 @@
         <form class="login_form" id="login_form" action="../register/register.php" method="post">
             <div class="field">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Username">
+                <input type="text" id="username" name="username" placeholder="Username" value="<?php echo isset($_COOKIE['remembered_username']) ? $_COOKIE['remembered_username'] : ''; ?>">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Password">
             </div>
