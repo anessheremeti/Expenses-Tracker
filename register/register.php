@@ -44,7 +44,8 @@ if(isset($_POST['login'])){
         session_start();
         $row=$result->fetch_assoc();
         $_SESSION['username']=$row['name'];
-       
+        setcookie('remembered_username', $userName, time() + 36000, "/");
+
         header("Location: /expense/dashbord/dashbord.php");
         exit();
     }
