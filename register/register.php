@@ -16,11 +16,13 @@ if(isset($_POST['signUP'])){
     }
     else{
         echo"    aaaaaaaaaaaaa";
+                            
         $insertQuery="INSERT INTO users( fullname ,`name`,email,`password`)
                         VALUES ('$fulltName' , '$userName' , '$email','$password')";
 
                         if($conn->query( $insertQuery)==TRUE){
-                            header("location: /expense/dashbord/dashbord.php");
+                            
+                            header("location: /Expenses-Tracker/dashbord/dashbord.php");
                             exit();
                         }
                         else{

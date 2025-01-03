@@ -11,7 +11,9 @@ html,body{
     width: 100%;
     height: 100%;
 }
-
+.sevim {
+    background-color:red;
+}
       /* Ky rregull çaktivizon të gjitha ndërveprimet e përdoruesit
        (klikime, prekjet, etj.)
        për çdo element në faqe kur trupi (body) ka klasën blocked.*/
