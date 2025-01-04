@@ -22,7 +22,7 @@ if(isset($_POST['signUP'])){
 
                         if($conn->query( $insertQuery)==TRUE){
                             
-                            header("location: ../dashbord/dashbord.php");
+                            header("location: /Expenses-Tracker/dashbord/dashbord.php");
                             exit();
                         }
                         else{
@@ -46,12 +46,12 @@ if(isset($_POST['login'])){
         $_SESSION['username']=$row['name'];
         setcookie('remembered_username', $userName, time() + 36000, "/");
 
-        header("Location: ../dashbord/dashbord.php");
+        header("Location: /expense/dashbord/dashbord.php");
         exit();
     }
     else{
         echo "note found incorrect pasword";
-        header("Location: ../log-in/login.php");
+        header("Location: /expense/log-in/login.php");
        
         echo $userName;
         echo $password;
