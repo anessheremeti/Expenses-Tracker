@@ -27,6 +27,15 @@ if ($result->num_rows > 0) {
     header("Location: ../log-in/login.php?error=UserNotFound");
     exit();
 }
+if(isset($_POST['Log_Out'])){
+    session_unset();
+    
+    // Shkatërroni seancën
+    session_destroy();
+
+    header("Location: /Expenses-Tracker/index.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -95,7 +104,9 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="action-buttons">
                     <a href="../edit-profile/edit-profile.php"><button>Edit Profile</button></a>
-                    <button class="danger">Delete Account</button>
+                    <form action="" method="post">
+                    <button class="danger" type="submit" name="Log_Out">Log Out</button>
+                    </form>
                 </div>
             </div>
         </div>
