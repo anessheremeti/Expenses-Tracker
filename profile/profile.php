@@ -1,4 +1,33 @@
+<?php
 
+session_start();
+require '../database.php';
+
+
+if (!isset($_SESSION['username'])) {
+    header("Location: ../log-in/login.php");
+    exit();
+}
+
+
+$username = $_SESSION['username'];
+$query = "SELECT users.fullname, users.email, users.name
+          FROM users
+       /*    LEFT JOIN budget ON users.id = budget.user_id */
+          WHERE users.name = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+} else {
+   
+    header("Location: ../log-in/login.php?error=UserNotFound");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
