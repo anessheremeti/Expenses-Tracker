@@ -46,12 +46,12 @@ if(isset($_POST['login'])){
         $_SESSION['username']=$row['name'];
         setcookie('remembered_username', $userName, time() + 36000, "/");
 
-        header("Location: /expense/dashbord/dashbord.php");
+        header("Location: /Expenses-Tracker/dashbord/dashbord.php");
         exit();
     }
     else{
         echo "note found incorrect pasword";
-        header("Location: /expense/log-in/login.php");
+        header("Location: /Expenses-Tracker/log-in/login.php");
        
         echo $userName;
         echo $password;
