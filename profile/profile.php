@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,62 +21,55 @@
                     <i class="fas fa-user"></i><span>Profile</span>
                 </div>
                 <a href="../dashbord/dashbord.php" class="link">
-                <div class="leftcontener-Boxheti">
-                    <i class="fas fa-wallet"></i><span>wallet</span>
-                </div>
-              </a>
-              <a href="../Transcation/Transcation.php" class="link">
-                <div class="leftcontener-transactionet">
-                    <i class="fas fa-exchange-alt"></i><span>Transactions</span>
-                </div>
-              </a>
-              <a href="../user-reports/report.php" class="link">
-                <div class="leftcontener-raporti">
-                    <i class="fas fa-chart-line"></i><span>Report</span>
-                </div>
-              </a>
+                    <div class="leftcontener-Boxheti">
+                        <i class="fas fa-wallet"></i><span>Wallet</span>
+                    </div>
+                </a>
+                <a href="../Transcation/Transcation.php" class="link">
+                    <div class="leftcontener-transactionet">
+                        <i class="fas fa-exchange-alt"></i><span>Transactions</span>
+                    </div>
+                </a>
+                <a href="../user-reports/report.php" class="link">
+                    <div class="leftcontener-raporti">
+                        <i class="fas fa-chart-line"></i><span>Report</span>
+                    </div>
+                </a>
             </div>
-            
         </div>
         
-
-   <div class="right-container">
-        <div class="rightcontainer-content">
-            <div class="profile-header">
-                <img src="../assets/profile.png" alt="Profile Image">
-                <h1>User</h1>
-              
-              </div>
-              <div class="profile-details">
-                <table>
-                  <tr>
-                    <th>Fullname:</th>
-                    <td><input type="text" value="Fullname" disabled></td>
-                  </tr>
-                  <tr>
-                    <th>Email:</th>
-                    <td><input type="email" value="Email" disabled></td>
-                  </tr>
-                  <tr>
-                    <th>Budget:</th>
-                    <td><input type="number" value="Budget" disabled></td>
-                  </tr>
-                  <tr>
-                    <th>Last Logged In:</th>
-                    <td><input type="time" value="time" disabled></td>
-                  </tr>
-
-
-                </table>
-              </div>
-              <div class="action-buttons">
-                <button>Edit Profile</button>
-                <button class="danger">Delete Account</button>
-              </div>
+        <div class="right-container">
+            <div class="rightcontainer-content">
+                <div class="profile-header">
+                    <img src="../assets/profile.png" alt="Profile Image">
+                    <h1><?php echo htmlspecialchars($user['fullname']); ?></h1>
+                </div>
+                <div class="profile-details">
+                    <table>
+                        <tr>
+                            <th>Username:</th>
+                            <td><input type="text" value="<?php echo htmlspecialchars($user['name']); ?>" disabled></td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td><input type="email" value="<?php echo htmlspecialchars($user['email']); ?>" disabled></td>
+                        </tr>
+                        <tr>
+                            <th>Budget:</th>
+                            <td><input type="number" value="<?php echo htmlspecialchars($user['budget'] ?? 0); ?>" disabled></td>
+                        </tr>
+                        <tr>
+                            <th>Last Logged In:</th>
+                            <td><input type="text" value="<?php echo htmlspecialchars($user['last_login'] ?? 'N/A'); ?>" disabled></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="action-buttons">
+                    <a href="../edit-profile/edit-profile.php"><button>Edit Profile</button></a>
+                    <button class="danger">Delete Account</button>
+                </div>
             </div>
         </div>
-   </div>
-    
-    
+    </div>
 </body>
 </html>
