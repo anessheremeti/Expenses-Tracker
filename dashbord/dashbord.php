@@ -1,47 +1,45 @@
+
 <?php
 include '../database.php';
+
+// Query for budget details
 $userBudgetQuery = "SELECT users.id, users.fullname, budget.Amount, budget.Source, budget.Confirm, budget.Date
                     FROM users
-                    inner JOIN budget ON users.id = budget.user";
+                    INNER JOIN budget ON users.id = budget.user";
 
-$itemPrice = "SELECT users.id,users.fullname,items.Amount,items.Description
-    FROM users
-    inner JOIN items ON users.id = item.user";
-
-$itemResult = mysqli_query($conn, $userBudgetQuery);
 $rez = mysqli_query($conn, $userBudgetQuery);
-if (!$itemResult) {
+
+// Query for total budget
+$userBudgetQueryTotal = "SELECT users.id, users.fullname, SUM(budget.Amount) AS totalBudget
+                        FROM users
+                        INNER JOIN budget ON users.id = budget.user
+                        GROUP BY users.id";
+
+// Query for item details
+$itemPriceQuery = "SELECT users.id, users.fullname, SUM(items.Amount) AS itemPrice, items.Description
+                   FROM users
+                   INNER JOIN items ON users.id = items.user
+                   GROUP BY users.id";
+
+$budgetResult = mysqli_query($conn, $userBudgetQueryTotal);
+$itemResult = mysqli_query($conn, $itemPriceQuery);
+
+if (!$budgetResult || !$itemResult) {
     die("Query failed: " . mysqli_error($conn));
 }
 
-
+// Store budget data in an array
+$budgets = [];
 
 if (!$rez) {
     die("Query failed: " . mysqli_error($conn));
 }
 
-//while ($row = mysqli_fetch_assoc($rez)) {
-//   echo "User ID: " . $row['id'] . " - Name: " . $row['fullname'] . " - Budget : " . $row['Amount'] . " - Source: " . $row['Source'] . " - Confirm: " . $row['Confirm'] . " - Date: " . $row['Date'] . "<br>";
-//}
-//if (mysqli_num_rows($rez) > 0) {
-// while ($row = mysqli_fetch_assoc($rez)) {
-//echo "<pre>";
-// print_r($row);  
-//   echo "</pre>";
-
-//      echo "User ID: " . $row['id'] . " - Budget Amount: " . $row['Amount'] . "<br>";
-// }
-//} else {
-//   echo "No results found for the query.<br>";  
-//}
-
-
+// Process adding funds
 if (isset($_POST["addfunds"])) {
     // Sanitize and validate inputs
     $amount = mysqli_real_escape_string($conn, $_POST["amount"]);
-
-    $source =  isset($_POST["confirm"]) ? mysqli_real_escape_string($conn, $_POST["source"]) : '';
-
+    $source = isset($_POST["confirm"]) ? mysqli_real_escape_string($conn, $_POST["source"]) : '';
     $confirm = isset($_POST["confirm"]) ? 1 : 0;
     $date = mysqli_real_escape_string($conn, $_POST["date"]);
 
@@ -49,7 +47,6 @@ if (isset($_POST["addfunds"])) {
     $stmt = $conn->prepare($query);
 
     if ($stmt) {
-
         $stmt->bind_param('ssss', $amount, $source, $confirm, $date);
 
         if ($stmt->execute()) {
@@ -63,6 +60,8 @@ if (isset($_POST["addfunds"])) {
         echo "<script> alert('Error preparing statement: " . $conn->error . "'); </script>";
     }
 }
+
+// Process adding items
 if (isset($_POST["addItem"])) {
     $amount = mysqli_real_escape_string($conn, $_POST["amount"]);
     $description = isset($_POST["description"]) && is_string($_POST["description"]) ? mysqli_real_escape_string($conn, $_POST["description"]) : '';
@@ -73,7 +72,6 @@ if (isset($_POST["addItem"])) {
     $stmt = $conn->prepare($query);
 
     if ($stmt) {
-
         $stmt->bind_param('ssss', $amount, $description, $confirm, $date);
 
         if ($stmt->execute()) {
@@ -96,9 +94,7 @@ if (isset($_POST["addItem"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stiliD.css">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
     <title>Document</title>
 </head>
 
@@ -115,7 +111,6 @@ if (isset($_POST["addItem"])) {
                     </div>
                 </a>
 
-
                 <div class="leftcontener-Boxheti">
                     <i class="fas fa-wallet"></i><span>wallet</span>
                 </div>
@@ -131,14 +126,13 @@ if (isset($_POST["addItem"])) {
                 </a>
             </div>
         </div>
-        <div class="rightcontenier" id="rightcontenier">
 
+        <div class="rightcontenier" id="rightcontenier">
             <div class="uperrbar">
                 <div class="logoja">
                     <img src="../assets/img/logoo.png" alt="">
                 </div>
                 <i class="fa-solid fa-bars" id="hamburgerlogo" style="font-size: 30px; cursor: pointer;"></i>
-
             </div>
 
             <div class="main-contener">
@@ -149,49 +143,6 @@ if (isset($_POST["addItem"])) {
                     <div class="balanci">
                         <span>balanci</span>
                         <?php
-                        while ($row = mysqli_fetch_assoc($rez)) {
-                        ?>
-                            <span> <?php echo   $row['Amount']  . '$' ?> </span>
-                        <?php
-                        }
-                        ?>
-                    </div>
-                    <div class="shpenzie-teArdhurat">
-                        <div class="teArdhurat">
-                            <span>Te ardhurat</span>
-                            <?php
-                            // Reseto pointerin ne 0
-                            mysqli_data_seek($rez, 0);
-
-                            while ($row = mysqli_fetch_assoc($rez)) {
-                                echo "<span>" . $row['Amount'] . "$</span>";
-                            }
-                            ?>
-                        </div>
-                        <div class="Shpenzimet">
-                            <span>Shpenzimet</span>
-                            <?php
-
-
-                            // Query per buxhetin total
-                            $userBudgetQuery = "SELECT users.id, users.fullname, budget.Amount AS totalBudget
-                        FROM users
-                        INNER JOIN budget ON users.id = budget.user";
-
-                            // Query per detajet e itemit
-                            $itemPriceQuery = "SELECT users.id, users.fullname, items.Amount AS itemPrice, items.Description
-                       FROM users
-                       INNER JOIN items ON users.id = items.user";
-
-                            $budgetResult = mysqli_query($conn, $userBudgetQuery);
-                            $itemResult = mysqli_query($conn, $itemPriceQuery);
-
-                            if (!$budgetResult || !$itemResult) {
-                                die("Query failed: " . mysqli_error($conn));
-                            }
-
-                            // Ruaje  buxhetin ne nje array
-                            $budgets = [];
                             while ($row = mysqli_fetch_assoc($budgetResult)) {
                                 $budgets[$row['id']] = [
                                     'fullname' => $row['fullname'],
@@ -199,16 +150,27 @@ if (isset($_POST["addItem"])) {
                                 ];
                             }
 
-                            // Zbrite cmimin e buxhetit - item
-                            while ($row = mysqli_fetch_assoc($itemResult)) {
-                                $userId = $row['id'];
-                                $itemPrice = $row['itemPrice'];
+                            // Subtract item prices from the budget
+                            mysqli_data_seek($budgetResult, 0);
 
-                                if (isset($budgets[$userId])) {
-                                    $budgets[$userId]['totalBudget'] -= $itemPrice;
-                                }
+                            // Display remaining budgets
+                            foreach ($budgets as $userId => $userInfo) {
+                                echo "<span>" . $userInfo['totalBudget'] . "$ </span>";
                             }
-                            //Reseto pointerin
+                            ?>
+                    </div>
+                    <div class="shpenzie-teArdhurat">
+                        <div class="teArdhurat">
+                            <span>Te ardhurat</span>
+                            <?php
+                            while ($row = mysqli_fetch_assoc($budgetResult)) {
+                                $budgets[$row['id']] = [
+                                    'fullname' => $row['fullname'],
+                                    'totalBudget' => $row['totalBudget']
+                                ];
+                            }
+
+                            // Subtract item prices from the budget
                             mysqli_data_seek($budgetResult, 0);
 
                             // Display remaining budgets
@@ -217,11 +179,38 @@ if (isset($_POST["addItem"])) {
                             }
                             ?>
                         </div>
+                        <div class="Shpenzimet">
+                            <span>Shpenzimet</span>
+                            <?php
+                            while ($row = mysqli_fetch_assoc($budgetResult)) {
+                                $budgets[$row['id']] = [
+                                    'fullname' => $row['fullname'],
+                                    'totalBudget' => $row['totalBudget']
+                                ];
+                            }
 
+                            // Subtract item prices from the budget
+                            while ($row = mysqli_fetch_assoc($itemResult)) {
+                                $userId = $row['id'];
+                                $itemPrice = $row['itemPrice'];
 
+                                if (isset($budgets[$userId])) {
+                                    $budgets[$userId]['totalBudget'] -= $itemPrice;
+                                }
+                            }
+                            mysqli_data_seek($budgetResult, 0);
+
+                            // Display remaining budgets
+                            foreach ($budgets as $userId => $userInfo) {
+                                echo "<span>" . $userInfo['totalBudget'] . "$ </span>";
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
+
                 <div class="overlay" id="outlay"></div>
+
                 <div class="buton-contener">
                     <div>
                         <button type="submit" id="Addfonds">Add funds</button>
@@ -229,10 +218,10 @@ if (isset($_POST["addItem"])) {
                     <div>
                         <button type="submit" id="Withdraw">Add Item</button>
                     </div>
-
                 </div>
             </div>
-            <div class="overlay" id="outlay"></div>
+
+            <!-- Add funds form -->
             <form method="POST" action="./dashbord.php" id="add-funds-form">
                 <div class="form-buton-contener" id="form-buton-contener">
                     <input type="hidden" name="addfunds" />
@@ -249,14 +238,13 @@ if (isset($_POST["addItem"])) {
                 </div>
             </form>
 
-
+            <!-- Add item form -->
             <form method="POST" action="./dashbord.php" id="Withdraw-form">
                 <div class="Withdraw-contener" id="Withdraw-contener">
                     <input type="hidden" name="addItem" />
                     <i class="fa-solid fa-x" id="WithdrawDelet"></i>
                     <label>Amount</label>
                     <input id="amaunt-input" name="amount" type="number" min="1" required>
-
                     <label>Description</label>
                     <input id="Description-input" name="description" type="text">
                     <label>Date</label>
@@ -267,8 +255,8 @@ if (isset($_POST["addItem"])) {
                 </div>
             </form>
         </div>
-        <div class="hamburger-contener" id="hamburger-contener">
 
+        <div class="hamburger-contener" id="hamburger-contener">
             <div class="hamburger-contener-Profili">
                 <i class="fa-solid fa-x" id="hamburger-contener-delet"></i>
                 <i class="fas fa-user"></i><span>Profile</span>
@@ -283,10 +271,4 @@ if (isset($_POST["addItem"])) {
                 <i class="fas fa-chart-line"></i><span>Report</span>
             </div>
         </div>
-    </div>
-    </div>
-
-    <script src="dashbord.js"></script>
-</body>
-
-</html>
+    </

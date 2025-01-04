@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //add fonds
     const addfundsform = document.getElementById('add-funds-form');
     const Addfonds = document.getElementById('Addfonds');
+
     const formButonContener = document.getElementById('form-buton-contener');
     const addFondsDelet = document.getElementById('add-funds-delet');
     const outlay = document.getElementById('outlay');
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formButonContener.style.display = "flex";
         outlay.style.display = "flex";
         document.body.classList.add("blocked");
-
+        console.log('hi')
     });
 
     // Mbyllja e formës
