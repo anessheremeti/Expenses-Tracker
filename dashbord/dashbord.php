@@ -271,4 +271,8 @@ if (isset($_POST["addItem"])) {
                 <i class="fas fa-chart-line"></i><span>Report</span>
             </div>
         </div>
-    </
+                        </div>
+    <script src="dashbord.js"></script>
+</body>
+
+</html>
