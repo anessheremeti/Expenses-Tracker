@@ -1,3 +1,21 @@
+<?php
+// Aktivizoni sesionet
+session_start();
+
+// Kontrolloni nëse formulari është dërguar
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Ruani të dhënat e dërguara nga përdoruesi
+    $_SESSION['full_name'] = $_POST['Full_name'] ?? '';
+    $_SESSION['email'] = $_POST['email'] ?? '';
+    $_SESSION['message'] = $_POST['message'] ?? '';
+
+    // Mesazhi falënderues
+    $thankYouMessage = "Thank you for your message!";
+
+    header("Location: /Expenses-Tracker/index.php?success=true&message=" . urlencode($thankYouMessage));
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,23 +80,23 @@
         </header>
        
       
-        <form id="contactForm" action="#">
+        <form id="contactForm" action="" method="post">
             <div class="form-field">
                 <label for="name">Full Name: <span class="required"></span></label>
                 <div class="field">
-                    <input type="text" id="name" placeholder="Write your name and surname" required>
+                    <input type="text" id="name" name="Full_name" placeholder="Write your name and surname" required>
                 </div>
             </div>
             <div class="form-field">
                 <label for="email">Email: <span class="required"></span></label>
                 <div class="field">
-                    <input type="email" id="email" placeholder="Write your email" required>
+                    <input type="email" id="email" name="email" placeholder="Write your email" required>
                 </div>
             </div>
             <div class="form-field message">
                 <label for="message">Message: <span class="required"></span></label>
                 <div class="field">
-                    <textarea id="message" placeholder="Write your message..." required></textarea>
+                    <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
                 </div>
             </div>
             <div class="button-area">
