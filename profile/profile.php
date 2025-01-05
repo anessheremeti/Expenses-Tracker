@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require '../database.php';
 
@@ -9,11 +8,26 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-
 $username = $_SESSION['username'];
-$query = "SELECT users.fullname, users.email, users.name
+
+$queryCheckFirstLogin = "SELECT first_login FROM users WHERE name = ?";
+$stmtCheck = $conn->prepare($queryCheckFirstLogin);
+$stmtCheck->bind_param("s", $username);
+$stmtCheck->execute();
+$resultCheck = $stmtCheck->get_result();
+$firstLoginRow = $resultCheck->fetch_assoc();
+
+
+if (is_null($firstLoginRow['first_login'])) {
+    $updateFirstLoginQuery = "UPDATE users SET first_login = NOW() WHERE name = ?";
+    $stmtUpdate = $conn->prepare($updateFirstLoginQuery);
+    $stmtUpdate->bind_param("s", $username);
+    $stmtUpdate->execute();
+}
+
+
+$query = "SELECT users.fullname, users.email, users.name, users.first_login
           FROM users
-       /*    LEFT JOIN budget ON users.id = budget.user_id */
           WHERE users.name = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $username);
@@ -23,10 +37,14 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
 } else {
-   
     header("Location: ../log-in/login.php?error=UserNotFound");
     exit();
 }
+
+
+$firstLogin = isset($user['first_login']) ? date("jS F Y, H:i", strtotime($user['first_login'])) : "N/A";
+
+
 if(isset($_POST['Log_Out'])){
     session_unset();
     
@@ -37,7 +55,6 @@ if(isset($_POST['Log_Out'])){
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +71,6 @@ if(isset($_POST['Log_Out'])){
                 <div class="leftcontener-llogoja">
                     <img src="https://images.unsplash.com/photo-1535117423468-de0ff056882e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aXNsYW18ZW58MHwxfDB8fHww" alt="">
                 </div>
-                
                 <div class="leftcontener-Profili">
                     <i class="fas fa-user"></i><span>Profile</span>
                 </div>
@@ -75,7 +91,6 @@ if(isset($_POST['Log_Out'])){
                 </a>
             </div>
         </div>
-        
         <div class="right-container">
             <div class="rightcontainer-content">
                 <div class="profile-header">
@@ -97,15 +112,15 @@ if(isset($_POST['Log_Out'])){
                             <td><input type="number" value="<?php echo htmlspecialchars($user['budget'] ?? 0); ?>" disabled></td>
                         </tr>
                         <tr>
-                            <th>Last Logged In:</th>
-                            <td><input type="text" value="<?php echo htmlspecialchars($user['last_login'] ?? 'N/A'); ?>" disabled></td>
+                            <th>First Logged In:</th>
+                            <td><input type="text" value="<?php echo htmlspecialchars($firstLogin); ?>" disabled></td>
                         </tr>
                     </table>
                 </div>
                 <div class="action-buttons">
                     <a href="../edit-profile/edit-profile.php"><button>Edit Profile</button></a>
                     <form action="" method="post">
-                    <button class="danger" type="submit" name="Log_Out">Log Out</button>
+                        <button class="danger" type="submit" name="Log_Out">Log Out</button>
                     </form>
                 </div>
             </div>
