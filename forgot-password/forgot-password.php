@@ -1,3 +1,44 @@
+<?php
+session_start();
+require '../database.php';
+
+
+if (!isset($_SESSION['username'])) {
+    header("Location: ../log-in/login.php");
+    exit();
+}
+
+$username = $_SESSION['username'];
+
+
+$sql = "SELECT * FROM users WHERE name='$username'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+} else {
+    echo "User not found!";
+    exit();
+}
+
+
+if (isset($_POST['updateProfile'])) {
+    $newUsername = trim($_POST['username']);
+    $newEmail = trim($_POST['email']);
+
+
+    $updateQuery = "UPDATE users SET name='$newUsername', email='$newEmail' WHERE name='$username'";
+
+    if ($conn->query($updateQuery) === TRUE) {
+        $_SESSION['username'] = $newUsername; 
+        header("Location: ../profile/profile.php"); 
+        exit();
+    } else {
+        echo "Error updating profile: " . $conn->error;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
