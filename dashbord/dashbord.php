@@ -1,6 +1,6 @@
-
 <?php
 include '../database.php';
+
 
 // Query for budget details
 $userBudgetQuery = "SELECT users.id, users.fullname, budget.Amount, budget.Source, budget.Confirm, budget.Date
@@ -10,13 +10,13 @@ $userBudgetQuery = "SELECT users.id, users.fullname, budget.Amount, budget.Sourc
 $rez = mysqli_query($conn, $userBudgetQuery);
 
 // Query for total budget
-$userBudgetQueryTotal = "SELECT users.id, users.fullname, SUM(budget.Amount) AS totalBudget
+$userBudgetQueryTotal = "SELECT users.id, users.name,users.fullname, SUM(budget.Amount) AS totalBudget
                         FROM users
                         INNER JOIN budget ON users.id = budget.user
                         GROUP BY users.id";
 
 // Query for item details
-$itemPriceQuery = "SELECT users.id, users.fullname, SUM(items.Amount) AS itemPrice, items.Description
+$itemPriceQuery = "SELECT users.id, users.fullname, users.name,SUM(items.Amount) AS itemPrice, items.Description
                    FROM users
                    INNER JOIN items ON users.id = items.user
                    GROUP BY users.id";
@@ -30,6 +30,7 @@ if (!$budgetResult || !$itemResult) {
 
 // Store budget data in an array
 $budgets = [];
+$items = [];
 
 if (!$rez) {
     die("Query failed: " . mysqli_error($conn));
@@ -60,6 +61,8 @@ if (isset($_POST["addfunds"])) {
         echo "<script> alert('Error preparing statement: " . $conn->error . "'); </script>";
     }
 }
+
+
 
 // Process adding items
 if (isset($_POST["addItem"])) {
@@ -141,71 +144,204 @@ if (isset($_POST["addItem"])) {
                 </div>
                 <div class="balanc-contener">
                     <div class="balanci">
-                        <span>balanci</span>
-                        <?php
-                            while ($row = mysqli_fetch_assoc($budgetResult)) {
-                                $budgets[$row['id']] = [
-                                    'fullname' => $row['fullname'],
-                                    'totalBudget' => $row['totalBudget']
-                                ];
+                        
+                            <div class="balanci">
+                            <?php
+                            // Resetimi i pointerave per rezultatet ne databaz
+                            mysqli_data_seek($budgetResult, 0);
+                            mysqli_data_seek($itemResult, 0);
+
+                            $income = 0;
+                            $expenses = 0;
+                            $balance = 0;
+                            $budgets = []; 
+
+                            // Kontrollo nese cookie remember_username ekziston
+                            if (isset($_COOKIE["remembered_username"])) {
+                                $cookieUsername = htmlspecialchars($_COOKIE["remembered_username"]);
+
+                                // Fetch budget prej databazes
+                                while ($row = mysqli_fetch_assoc($budgetResult)) {
+                                    $dbName = trim(strtolower($row['name']));
+                                    $cookieName = trim(strtolower($cookieUsername));
+
+                                    if ($dbName === $cookieName) {
+                                        $income += $row['totalBudget'];
+                                        $budgets[$row['id']] = [
+                                            'name' => $row['name'],
+                                            'totalBudget' => $row['totalBudget']
+                                        ];
+                                    }
+                                }
+
+                                // Reset item result pointerin
+                                mysqli_data_seek($itemResult, 0);
+
+                                // Fetch item expenses (shpenzimet)
+                                while ($row = mysqli_fetch_assoc($itemResult)) {
+                                    $dbName = trim(strtolower($row['name']));
+                                    $cookieName = trim(strtolower($cookieUsername));
+
+                                    if ($dbName === $cookieName) {
+                                        $expenses += $row['itemPrice'];
+                                    }
+                                }
+
+                                // Llogarit balancin
+                                $balance = $income - $expenses;
+
+                              
+                                echo "<span>Balanci :  {$balance}$</span><br>";
+                            } else {
+                                echo "<span>User not logged in or no remembered cookie set.</span>";
                             }
 
-                            // Subtract item prices from the budget
-                            mysqli_data_seek($budgetResult, 0);
-
-                            // Display remaining budgets
-                            foreach ($budgets as $userId => $userInfo) {
-                                echo "<span>" . $userInfo['totalBudget'] . "$ </span>";
+                            if (!empty($budgets)) {
+                                echo "<div class='budgets'>";
+                              
+                               
+                                echo "</div>";
+                            } else {
+                                echo "<span>No budgets found.</span>";
                             }
                             ?>
+                            </div>
+                        
+
+
                     </div>
+
                     <div class="shpenzie-teArdhurat">
                         <div class="teArdhurat">
                             <span>Te ardhurat</span>
                             <?php
-                            while ($row = mysqli_fetch_assoc($budgetResult)) {
-                                $budgets[$row['id']] = [
-                                    'fullname' => $row['fullname'],
-                                    'totalBudget' => $row['totalBudget']
-                                ];
+                            // Resetimi i pointerave per rezultatet ne databaz
+                            mysqli_data_seek($budgetResult, 0);
+                            mysqli_data_seek($itemResult, 0);
+
+                            $income = 0;
+                            $expenses = 0;
+                            $balance = 0;
+                            $budgets = []; 
+
+                     
+                            if (isset($_COOKIE["remembered_username"])) {
+                                $cookieUsername = htmlspecialchars($_COOKIE["remembered_username"]);
+
+                              
+                                while ($row = mysqli_fetch_assoc($budgetResult)) {
+                                    $dbName = trim(strtolower($row['name']));
+                                    $cookieName = trim(strtolower($cookieUsername));
+
+                                    if ($dbName === $cookieName) {
+                                        $income += $row['totalBudget'];
+                                        $budgets[$row['id']] = [
+                                            'name' => $row['name'],
+                                            'totalBudget' => $row['totalBudget']
+                                        ];
+                                    }
+                                }
+
+                                mysqli_data_seek($itemResult, 0);
+
+                             
+                                while ($row = mysqli_fetch_assoc($itemResult)) {
+                                    $dbName = trim(strtolower($row['name']));
+                                    $cookieName = trim(strtolower($cookieUsername));
+
+                                    if ($dbName === $cookieName) {
+                                        $expenses += $row['itemPrice'];
+                                    }
+                                }
+
+                             
+                                $balance = $income - $expenses;
+
+                               
+                                echo "<span>{$income}$</span><br>";
+                                
+                            } else {
+                                echo "<span>User not logged in or no remembered cookie set.</span>";
                             }
 
-                            // Subtract item prices from the budget
-                            mysqli_data_seek($budgetResult, 0);
-
-                            // Display remaining budgets
-                            foreach ($budgets as $userId => $userInfo) {
-                                echo "<span>" . $userInfo['totalBudget'] . "$ </span>";
+                          
+                            if (!empty($budgets)) {
+                                echo "<div class='budgets'>";
+                                echo "</div>";
+                            } else {
+                                echo "<span>No budgets found.</span>";
                             }
                             ?>
+
+
                         </div>
                         <div class="Shpenzimet">
                             <span>Shpenzimet</span>
                             <?php
-                            while ($row = mysqli_fetch_assoc($budgetResult)) {
-                                $budgets[$row['id']] = [
-                                    'fullname' => $row['fullname'],
-                                    'totalBudget' => $row['totalBudget']
-                                ];
-                            }
-
-                            // Subtract item prices from the budget
-                            while ($row = mysqli_fetch_assoc($itemResult)) {
-                                $userId = $row['id'];
-                                $itemPrice = $row['itemPrice'];
-
-                                if (isset($budgets[$userId])) {
-                                    $budgets[$userId]['totalBudget'] -= $itemPrice;
-                                }
-                            }
+                            
                             mysqli_data_seek($budgetResult, 0);
+                            mysqli_data_seek($itemResult, 0);
 
-                            // Display remaining budgets
-                            foreach ($budgets as $userId => $userInfo) {
-                                echo "<span>" . $userInfo['totalBudget'] . "$ </span>";
+                            // Initialize  $income = 0;
+                            $expenses = 0;
+                            $balance = 0;
+                            $budgets = []; 
+
+                            
+                            if (isset($_COOKIE["remembered_username"])) {
+                                $cookieUsername = htmlspecialchars($_COOKIE["remembered_username"]);
+
+                              
+                                while ($row = mysqli_fetch_assoc($budgetResult)) {
+                                    $dbName = trim(strtolower($row['name']));
+                                    $cookieName = trim(strtolower($cookieUsername));
+
+                                    
+                                    if ($dbName === $cookieName) {
+                                        $income += $row['totalBudget'];
+                                        $budgets[$row['id']] = [
+                                            'name' => $row['name'],
+                                            'totalBudget' => $row['totalBudget']
+                                        ];
+                                    }
+                                }
+
+                                mysqli_data_seek($itemResult, 0);
+
+                                
+                                while ($row = mysqli_fetch_assoc($itemResult)) {
+                                    $dbName = trim(strtolower($row['name']));
+                                    $cookieName = trim(strtolower($cookieUsername));
+
+                                   
+                                    if ($dbName === $cookieName) {
+                                        $expenses += $row['itemPrice'];
+                                    }
+                                }
+
+                             
+                                $balance = $income - $expenses;
+
+                             
+                               
+                                echo "<span> {$expenses}$</span><br>";
+                              
+                            } else {
+                                echo "<span>User not logged in or no remembered cookie set.</span>";
+                            }
+
+                           
+                            if (!empty($budgets)) {
+                                echo "<div class='budgets'>";
+                             
+                                
+                                echo "</div>";
+                            } else {
+                                echo "<span>No budgets found.</span>";
                             }
                             ?>
                         </div>
+
                     </div>
                 </div>
 
@@ -271,7 +407,7 @@ if (isset($_POST["addItem"])) {
                 <i class="fas fa-chart-line"></i><span>Report</span>
             </div>
         </div>
-                        </div>
+    </div>
     <script src="dashbord.js"></script>
 </body>
 
