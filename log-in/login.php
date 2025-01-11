@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,10 +22,11 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Password">
             </div>
+            
+        <div class="forgot-password">
+        <a href="../forgot-password/forgot-password.php">Forgot Password?</a>
+      </div>
 
-            <div class="forgot-password">
-                <a href="../forgot-password/forgot-password.php">Forgot Password?</a>
-            </div>
            
             <button type="submit" class="button" name="login">Log In</button>
     

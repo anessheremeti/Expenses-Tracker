@@ -48,7 +48,6 @@ $firstLogin = isset($user['first_login']) ? date("jS F Y, H:i", strtotime($user[
 if(isset($_POST['Log_Out'])){
     session_unset();
     
-    // Shkatërroni seancën
     session_destroy();
 
     header("Location: /Expenses-Tracker/index.php");

@@ -6,7 +6,7 @@ $db_name="expensesdb";
 // $conn="";
 $conn = mysqli_connect($db_server,$db_user,$db_pass,$db_name);
 if($conn) {
-  //  echo "You are connected";
+ // echo "You are connected";
 }
 else {
     echo "Could not connect to database";

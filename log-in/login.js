@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             errorElement.style.display = "block";
         } else {
             errorElement.style.display = "none";
-            alert("Form Submitted Successfully!");
+            alert("Logged In Successfully!");
             console.log(window.location)
             window.location.href = "../dashbord/dashbord.php";
         }
