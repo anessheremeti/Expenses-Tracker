@@ -1,12 +1,39 @@
 <?php
 include '../database.php';
+session_start();
 
 if (isset($_COOKIE["remembered_username"])) {
     $cookieUsername = mysqli_real_escape_string($conn, strtolower(trim($_COOKIE["remembered_username"])));
 } else {
     die("User is not logged in.");
 }
+$userId = $_SESSION['id'];
+$query = "SELECT ItemID FROM items";
+$queryForItemDelete = mysqli_query($conn, $query);
 
+if ($queryForItemDelete) {
+    while ($row = mysqli_fetch_assoc($queryForItemDelete)) {
+        $itemID = $row['ItemID'];
+        echo "Item ID: " . htmlspecialchars($itemID) . "<br>";
+    }
+} else {
+    echo "Error executing query: " . mysqli_error($con);
+}
+
+
+
+if (isset($_GET["deleteid"])) {
+    $id = $_GET["deleteid"];
+
+    $itemDelete = "delete from `items` where ItemID =  $id";
+    echo $itemDelete;
+    $rez = mysqli_query($conn, $itemDelete);
+    if ($rez) {
+        echo "Deleted successfully";
+    } else {
+        die(mysqli_error($conn));
+    }
+}
 $transactionQuery = "
     (SELECT 
         users.id,
@@ -133,11 +160,15 @@ if (!$result) {
                                 <td>
                                     <?php
                                     if ($row['transaction_type'] == 'fund' && isset($row['budget_amount']) && $row['budget_amount'] > 0) {
-                                        // Displaying positive amount for funds
-                                        echo "+" . htmlspecialchars($row['budget_amount']) . " $";
+                                        echo '+' . htmlspecialchars($row['budget_amount']) . " $</span>";
                                     } elseif ($row['transaction_type'] == 'expense' && isset($row['transaction_amount'])) {
                                         // Displaying amount for expenses
                                         echo '-' . htmlspecialchars($row['transaction_amount']) . " $";
+                                        echo '
+                                            <form method="GET" style="display:inline;">
+                                            <input type="hidden" name="deleteid" value="' . $itemID . '">
+                                              <button  class="btn">Delete</button>
+                                                </form>';
                                     }
                                     ?>
 
