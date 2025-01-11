@@ -1,6 +1,5 @@
 <?php
 include '../database.php';
-
 if(isset($_POST['signUP'])){
     echo "Sign Up button clicked<br>";
     $fulltName=trim($_POST['full-name']);
@@ -46,11 +45,24 @@ if(isset($_POST['login'])){
 
     $result=$conn->query($sql);
     if($result->num_rows > 0){
+    /*    $row=$result->fetch_assoc();
         session_start();
-        $row=$result->fetch_assoc();
+        $userId = $_SESSION['id'];
+       $cookie_ID = $row['id'];
         $_SESSION['username']=$row['name'];
         setcookie('remembered_username', $userName, time() + 36000, "/");
-
+        setcookie('user_id', $cookie_ID, time() + 36000, "/");
+*/
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            session_start();
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['username'] = $row['name'];
+            setcookie('remembered_username', $row['name'], time() + 36000, "/");
+            setcookie('user_id', $row['id'], time() + 36000, "/");
+        }
+        
         header("Location: /Expenses-Tracker/dashbord/dashbord.php");
         exit();
     }

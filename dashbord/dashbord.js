@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //add fonds
     const addfundsform = document.getElementById('add-funds-form');
     const Addfonds = document.getElementById('Addfonds');
-
+    let isSubmited = false;
     const formButonContener = document.getElementById('form-buton-contener');
     const addFondsDelet = document.getElementById('add-funds-delet');
     const outlay = document.getElementById('outlay');
@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
             WithdrawForm.submit(); // Dërgon formën manualisht
         }
     });
-
+    if (isSubmited) {
+        return false;
+    }
 
 
     // Hapja e formës //add fonds
@@ -60,7 +62,8 @@ document.addEventListener("DOMContentLoaded", function() {
         formButonContener.style.display = "flex";
         outlay.style.display = "flex";
         document.body.classList.add("blocked");
-        console.log('hi')
+        isSubmited = true;
+
     });
 
     // Mbyllja e formës
@@ -105,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     WithdrawForm.addEventListener('submit', function(e) {
         e.preventDefault(); // Parandalon sjelljen default të formës
+        isSubmited = true;
 
         const amount = document.getElementById("amaunt-input").value; // Merr vlerën e shumës
         console.log(amount);

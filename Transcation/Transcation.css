@@ -44,6 +44,24 @@ th {
   top: 0; 
   z-index: 1;
 }
+.positive {
+  color:green;
+}
+.negative{
+  color:red;
+}
+.btn {
+  color:white;
+  background-color:red;
+  padding:0.4rem;
+  border-radius:2px 3px 2px 4px;
+  transition: 1s background-color ease transform;
+}
+.btn:hover {
+  cursor:pointer;
+  color:red;
+  background-color:white;
+}
 
 tr:nth-child(even) {
   background-color: #ebf2fa;

@@ -1,21 +1,23 @@
 <?php
 include '../database.php';
 
+session_start();
+if (!isset($_SESSION['id'])) {
+    header('Location: ../log-in/login.php');
+    exit();
+}
 
-// Query for budget details
 $userBudgetQuery = "SELECT users.id, users.fullname, budget.Amount, budget.Source, budget.Confirm, budget.Date
                     FROM users
                     INNER JOIN budget ON users.id = budget.user";
 
 $rez = mysqli_query($conn, $userBudgetQuery);
 
-// Query for total budget
 $userBudgetQueryTotal = "SELECT users.id, users.name,users.fullname, SUM(budget.Amount) AS totalBudget
                         FROM users
                         INNER JOIN budget ON users.id = budget.user
                         GROUP BY users.id";
 
-// Query for item details
 $itemPriceQuery = "SELECT users.id, users.fullname, users.name,SUM(items.Amount) AS itemPrice, items.Description
                    FROM users
                    INNER JOIN items ON users.id = items.user
@@ -28,7 +30,6 @@ if (!$budgetResult || !$itemResult) {
     die("Query failed: " . mysqli_error($conn));
 }
 
-// Store budget data in an array
 $budgets = [];
 $items = [];
 
@@ -36,22 +37,21 @@ if (!$rez) {
     die("Query failed: " . mysqli_error($conn));
 }
 
-// Process adding funds
 if (isset($_POST["addfunds"])) {
-    // Sanitize and validate inputs
     $amount = mysqli_real_escape_string($conn, $_POST["amount"]);
     $source = isset($_POST["confirm"]) ? mysqli_real_escape_string($conn, $_POST["source"]) : '';
     $confirm = isset($_POST["confirm"]) ? 1 : 0;
     $date = mysqli_real_escape_string($conn, $_POST["date"]);
+    $userId = $_SESSION['id'];
 
-    $query = "INSERT INTO budget (Amount, Source, Confirm, `Date`) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO budget (Amount, Source, Confirm, `Date`,user) VALUES (?, ?, ?, ?,?)";
     $stmt = $conn->prepare($query);
-
     if ($stmt) {
-        $stmt->bind_param('ssss', $amount, $source, $confirm, $date);
+        $stmt->bind_param('ssisi', $amount, $source, $confirm, $date,$userId);
 
         if ($stmt->execute()) {
             echo "<script> alert('Data Inserted Successfully'); </script>";
+            header('Location: ./dashbord.php');            
         } else {
             echo "<script> alert('Error: " . $stmt->error . "'); </script>";
         }
@@ -64,21 +64,23 @@ if (isset($_POST["addfunds"])) {
 
 
 
-// Process adding items
 if (isset($_POST["addItem"])) {
     $amount = mysqli_real_escape_string($conn, $_POST["amount"]);
     $description = isset($_POST["description"]) && is_string($_POST["description"]) ? mysqli_real_escape_string($conn, $_POST["description"]) : '';
     $confirm = isset($_POST["confirm"]) ? 1 : 0;
     $date = mysqli_real_escape_string($conn, $_POST["date"]);
+    $userId = $_SESSION['id']; // Get user ID from session
 
-    $query = "INSERT INTO items (Amount, `Description`, Confirm, `Date`) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO items (Amount, `Description`, Confirm, `Date`, user) VALUES (?, ?, ?, ?, ?)";
+   
     $stmt = $conn->prepare($query);
 
     if ($stmt) {
-        $stmt->bind_param('ssss', $amount, $description, $confirm, $date);
+        $stmt->bind_param('ssisi', $amount, $description, $confirm, $date, $userId);
 
         if ($stmt->execute()) {
             echo "<script> alert('Data Inserted Successfully'); </script>";
+            header('Location: ./dashbord.php');             
         } else {
             echo "<script> alert('Error: " . $stmt->error . "'); </script>";
         }
@@ -147,16 +149,13 @@ if (isset($_POST["addItem"])) {
                         
                             <div class="balanci">
                             <?php
-                            // Resetimi i pointerave per rezultatet ne databaz
                             mysqli_data_seek($budgetResult, 0);
                             mysqli_data_seek($itemResult, 0);
 
                             $income = 0;
                             $expenses = 0;
                             $balance = 0;
-                            $budgets = []; 
-
-                            // Kontrollo nese cookie remember_username ekziston
+                           
                             if (isset($_COOKIE["remembered_username"])) {
                                 $cookieUsername = htmlspecialchars($_COOKIE["remembered_username"]);
 
@@ -174,11 +173,9 @@ if (isset($_POST["addItem"])) {
                                     }
                                 }
 
-                                // Reset item result pointerin
                                 mysqli_data_seek($itemResult, 0);
 
-                                // Fetch item expenses (shpenzimet)
-                                while ($row = mysqli_fetch_assoc($itemResult)) {
+                               while ($row = mysqli_fetch_assoc($itemResult)) {
                                     $dbName = trim(strtolower($row['name']));
                                     $cookieName = trim(strtolower($cookieUsername));
 
@@ -187,23 +184,19 @@ if (isset($_POST["addItem"])) {
                                     }
                                 }
 
-                                // Llogarit balancin
-                                $balance = $income - $expenses;
+                              $balance = $income - $expenses;
 
                               
                                 echo "<span>Balanci :  {$balance}$</span><br>";
-                            } else {
-                                echo "<span>User not logged in or no remembered cookie set.</span>";
-                            }
+                            } 
+                            
 
                             if (!empty($budgets)) {
                                 echo "<div class='budgets'>";
                               
                                
                                 echo "</div>";
-                            } else {
-                                echo "<span>No budgets found.</span>";
-                            }
+                            } 
                             ?>
                             </div>
                         
@@ -215,8 +208,7 @@ if (isset($_POST["addItem"])) {
                         <div class="teArdhurat">
                             <span>Te ardhurat</span>
                             <?php
-                            // Resetimi i pointerave per rezultatet ne databaz
-                            mysqli_data_seek($budgetResult, 0);
+                           mysqli_data_seek($budgetResult, 0);
                             mysqli_data_seek($itemResult, 0);
 
                             $income = 0;
@@ -282,10 +274,9 @@ if (isset($_POST["addItem"])) {
                             mysqli_data_seek($budgetResult, 0);
                             mysqli_data_seek($itemResult, 0);
 
-                            // Initialize  $income = 0;
                             $expenses = 0;
                             $balance = 0;
-                            $budgets = []; 
+                            
 
                             
                             if (isset($_COOKIE["remembered_username"])) {
@@ -357,7 +348,6 @@ if (isset($_POST["addItem"])) {
                 </div>
             </div>
 
-            <!-- Add funds form -->
             <form method="POST" action="./dashbord.php" id="add-funds-form">
                 <div class="form-buton-contener" id="form-buton-contener">
                     <input type="hidden" name="addfunds" />
@@ -374,7 +364,6 @@ if (isset($_POST["addItem"])) {
                 </div>
             </form>
 
-            <!-- Add item form -->
             <form method="POST" action="./dashbord.php" id="Withdraw-form">
                 <div class="Withdraw-contener" id="Withdraw-contener">
                     <input type="hidden" name="addItem" />

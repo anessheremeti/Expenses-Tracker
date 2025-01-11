@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ss", $newPassword, $username);
         if ($stmt->execute()) {
             $success = "Password updated successfully!";
+            
         } else {
             $error = "Error updating password: " . $stmt->error;
         }
