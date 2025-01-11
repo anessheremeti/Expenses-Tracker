@@ -1,40 +1,27 @@
 <?php
-session_start();
 require '../database.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $newPassword = trim($_POST['newPassword']);
+    $confirmPassword = trim($_POST['confirmPassword']);
 
-if (!isset($_SESSION['username'])) {
-    header("Location: ../log-in/login.php");
-    exit();
-}
-
-$username = $_SESSION['username'];
-
-
-$sql = "SELECT * FROM users WHERE name='$username'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-} else {
-    echo "User not found!";
-    exit();
-}
-
-
-if (isset($_POST['updateProfile'])) {
-    $newUsername = trim($_POST['username']);
-    $newEmail = trim($_POST['email']);
-
-
-    $updateQuery = "UPDATE users SET name='$newUsername', email='$newEmail' WHERE name='$username'";
-
-    if ($conn->query($updateQuery) === TRUE) {
-        $_SESSION['username'] = $newUsername; 
-        header("Location: ../profile/profile.php"); 
-        exit();
+    if (empty($username) || empty($newPassword) || empty($confirmPassword)) {
+        $error = "All fields are required!";
+    } elseif (strlen($newPassword) <= 8) {
+        $error = "Password must be at least 8 characters long!";
+    } elseif ($newPassword !== $confirmPassword) {
+        $error = "Passwords do not match!";
     } else {
-        echo "Error updating profile: " . $conn->error;
+
+        $stmt = $conn->prepare("UPDATE users SET password=? WHERE name=?");
+        $stmt->bind_param("ss", $newPassword, $username);
+        if ($stmt->execute()) {
+            $success = "Password updated successfully!";
+        } else {
+            $error = "Error updating password: " . $stmt->error;
+        }
+        $stmt->close();
     }
 }
 ?>
@@ -51,9 +38,9 @@ if (isset($_POST['updateProfile'])) {
     <div class="container">
         <h1>Forgot Password</h1>
 
-        <?php if (isset($error)): ?>
+        <?php if (!empty($error)): ?>
             <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
-        <?php elseif (isset($success)): ?>
+        <?php elseif (!empty($success)): ?>
             <p style="color: green;"><?php echo htmlspecialchars($success); ?></p>
         <?php endif; ?>
 
