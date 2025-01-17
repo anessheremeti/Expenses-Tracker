@@ -18,7 +18,7 @@
                 <a href="../About0us/About-Us.php">
                     <li>About us</li>
                 </a>
-                <a href="../features/features.php"></a>
+                <a href="../contact-us/contact-us.php">
                 <li>Contact us</li>
                 </a>
 
