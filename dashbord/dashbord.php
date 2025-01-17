@@ -69,7 +69,7 @@ if (isset($_POST["addItem"])) {
     $description = isset($_POST["description"]) && is_string($_POST["description"]) ? mysqli_real_escape_string($conn, $_POST["description"]) : '';
     $confirm = isset($_POST["confirm"]) ? 1 : 0;
     $date = mysqli_real_escape_string($conn, $_POST["date"]);
-    $userId = $_SESSION['id']; // Get user ID from session
+    $userId = $_SESSION['id'];  
 
     $query = "INSERT INTO items (Amount, `Description`, Confirm, `Date`, user) VALUES (?, ?, ?, ?, ?)";
    
