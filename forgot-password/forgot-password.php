@@ -13,15 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($newPassword !== $confirmPassword) {
         $error = "Passwords do not match!";
     } else {
+        // Hash the new password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
         $stmt = $conn->prepare("UPDATE users SET password=? WHERE name=?");
-        $stmt->bind_param("ss", $newPassword, $username);
+        $stmt->bind_param("ss", $hashedPassword, $username);
+
         if ($stmt->execute()) {
             $success = "Password updated successfully!";
-            
         } else {
             $error = "Error updating password: " . $stmt->error;
         }
+
         $stmt->close();
     }
 }

@@ -2,7 +2,6 @@
 session_start();
 require '../database.php';
 
-
 if (!isset($_SESSION['username'])) {
     header("Location: ../log-in/login.php");
     exit();
@@ -17,7 +16,6 @@ $stmtCheck->execute();
 $resultCheck = $stmtCheck->get_result();
 $firstLoginRow = $resultCheck->fetch_assoc();
 
-
 if (is_null($firstLoginRow['first_login'])) {
     $updateFirstLoginQuery = "UPDATE users SET first_login = NOW() WHERE name = ?";
     $stmtUpdate = $conn->prepare($updateFirstLoginQuery);
@@ -25,8 +23,7 @@ if (is_null($firstLoginRow['first_login'])) {
     $stmtUpdate->execute();
 }
 
-
-$query = "SELECT users.fullname, users.email, users.name, users.first_login
+$query = "SELECT users.fullname, users.email, users.name, users.first_login 
           FROM users
           WHERE users.name = ?";
 $stmt = $conn->prepare($query);
@@ -41,19 +38,46 @@ if ($result->num_rows > 0) {
     exit();
 }
 
-
 $firstLogin = isset($user['first_login']) ? date("jS F Y, H:i", strtotime($user['first_login'])) : "N/A";
 
+$userIdQuery = "SELECT id FROM users WHERE name = ?";
+$stmtUserId = $conn->prepare($userIdQuery);
+$stmtUserId->bind_param("s", $username);
+$stmtUserId->execute();
+$resultUserId = $stmtUserId->get_result();
+$userRow = $resultUserId->fetch_assoc();
+$userId = $userRow['id'];
 
-if(isset($_POST['Log_Out'])){
+$incomeQuery = "SELECT SUM(budget.Amount) AS totalIncome 
+                FROM budget 
+                WHERE budget.user = ?";
+$stmtIncome = $conn->prepare($incomeQuery);
+$stmtIncome->bind_param("i", $userId);
+$stmtIncome->execute();
+$resultIncome = $stmtIncome->get_result();
+$incomeRow = $resultIncome->fetch_assoc();
+$totalIncome = $incomeRow['totalIncome'] ?? 0;
+
+$expensesQuery = "SELECT SUM(items.Amount) AS totalExpenses 
+                  FROM items 
+                  WHERE items.user = ?";
+$stmtExpenses = $conn->prepare($expensesQuery);
+$stmtExpenses->bind_param("i", $userId);
+$stmtExpenses->execute();
+$resultExpenses = $stmtExpenses->get_result();
+$expensesRow = $resultExpenses->fetch_assoc();
+$totalExpenses = $expensesRow['totalExpenses'] ?? 0;
+
+$currentBalance = $totalIncome - $totalExpenses;
+
+if (isset($_POST['Log_Out'])) {
     session_unset();
-    
     session_destroy();
-
     header("Location: /Expenses-Tracker/index.php");
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,13 +131,15 @@ if(isset($_POST['Log_Out'])){
                             <td><input type="email" value="<?php echo htmlspecialchars($user['email']); ?>" disabled></td>
                         </tr>
                         <tr>
-                            <th>Budget:</th>
-                            <td><input type="number" value="<?php echo htmlspecialchars($user['budget'] ?? 0); ?>" disabled></td>
+                              <th>Budget:</th>
+                          <td><input type="number" value="<?php echo htmlspecialchars($currentBalance); ?>" disabled></td>
                         </tr>
+
                         <tr>
                             <th>First Logged In:</th>
                             <td><input type="text" value="<?php echo htmlspecialchars($firstLogin); ?>" disabled></td>
                         </tr>
+
                     </table>
                 </div>
                 <div class="action-buttons">
