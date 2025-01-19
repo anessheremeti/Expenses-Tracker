@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="stilizimi-About-Us.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+
+
+    <style>
+        img{
+            display: flex;
+            position: absolute;
+            top:0;
+            right: 0;
+            padding-right: 10px;
+            padding-top: 10px;
+            height: 3rem;
+            width: 3rem;
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
@@ -14,7 +28,9 @@
         <a href="../index.php">
             <button><i class="fas fa-arrow-left"></i></button>
         </a>
-        <div class="Abuat-us" ><h1>About Us</h1></div>
+        <img src="../assets/img/logoo.png" alt="">
+        <div class="Abuat-us" ><h1>About Us</h1>
+        </div>
         <div style="display: flex; justify-content: center;">
         <div class="Main-conteber">
         <ol>
@@ -23,9 +39,9 @@
                     <h2>Program Purpos</h2>
                     <ul>
                         <li>
-                            <p>  Welcome to [Program Name],
+                            <p>  Welcome to Expense Tracker,
                                 a powerful solution for managing personal finances! 
-                                Our program is designed to help users manage their expenses and have a clear overview of their finances. With [Program Name],
+                                Our program is designed to help users manage their expenses and have a clear overview of their finances. With Expense Tracker,
                                 you will have the ability to monitor your expenses and analyze your financial habits to make more informed decisions.</p>
                         </li>
                     </ul>
@@ -83,7 +99,7 @@
                 <li><h2>Usage and Access</h2></li>
                 <ul>
                     <li>
-                        <b>[Program Name]</b> is available as a mobile app and on the web, giving you easy access to your finances from anywhere.
+                        <b>Expense Tracker</b> is available as a mobile app and on the web, giving you easy access to your finances from anywhere.
                         We offer a free version with full functionality and a premium version with additional services for those who want more options and analysis.
                     </li>
                 </ul>
