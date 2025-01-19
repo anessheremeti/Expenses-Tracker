@@ -1,18 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("login_form");
     const username = document.getElementById("username");
     const password = document.getElementById("password");
-    const errorElement = document.getElementById('error');
-    const inputs = form.querySelectorAll("input[required]");
+    const errorElement = document.getElementById("error");
 
-    form.addEventListener("submit", function(event) {
-       // event.preventDefault();
+    form.addEventListener("submit", function (event) {
         let isFormValid = true;
-        let messages = [];
+        let errorMessage = "";
 
         if (username.value.trim() === "") {
             username.style.borderColor = "red";
-            messages.push("Username is required.");
+            errorMessage += "Username is required.\n";
             isFormValid = false;
         } else {
             username.style.borderColor = "green";
@@ -20,29 +18,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (password.value.trim() === "") {
             password.style.borderColor = "red";
-            messages.push("Password is required.");
+            errorMessage += "Password is required.\n";
             isFormValid = false;
         } else if (password.value.length <= 8) {
             password.style.borderColor = "red";
-            messages.push("Password must be longer than 8 characters.");
+            errorMessage += "Password must be longer than 8 characters.\n";
             isFormValid = false;
         } else {
             password.style.borderColor = "green";
         }
 
-    
-
-        if (messages.length > 0) {
-            errorElement.innerText = messages.join("\n");
+        if (!isFormValid) {
+            event.preventDefault(); 
+            errorElement.innerText = errorMessage.trim();
             errorElement.style.display = "block";
+            errorElement.style.color = "red";
         } else {
             errorElement.style.display = "none";
-            alert("Logged In Successfully!");
-            console.log(window.location)
-            window.location.href = "../dashbord/dashbord.php";
         }
     });
-    username.addEventListener("input", function() {
+
+    username.addEventListener("input", function () {
         if (username.value.trim() === "") {
             username.style.borderColor = "red";
         } else {
@@ -50,10 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    password.addEventListener("input", function() {
-        if (password.value.trim() === "") {
-            password.style.borderColor = "red";
-        } else if (password.value.length <= 8) {
+    password.addEventListener("input", function () {
+        if (password.value.trim() === "" || password.value.length <= 8) {
             password.style.borderColor = "red";
         } else {
             password.style.borderColor = "green";

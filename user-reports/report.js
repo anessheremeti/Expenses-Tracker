@@ -1,25 +1,47 @@
-function calculateAverages(totalIncome, totalExpenses, daysInPeriod) {
-    const dailyIncome = totalIncome / daysInPeriod;
-    const dailyExpenses = totalExpenses / daysInPeriod;
+
+let totalExpenses = 0;
+
+
+const startDate = new Date(); 
+
+function calculateExpenseAverages(totalExpenses) {
+    const current = new Date();
+    const currentMonth = current.getMonth(); 
+    const currentYear = current.getFullYear();
+
+    const monthsInPeriod = (currentYear - startDate.getFullYear()) * 12 
+        + (currentMonth - startDate.getMonth() + 1);
+
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    const dailyExpenses = totalExpenses / daysInMonth;
+    const monthlyExpenses = totalExpenses / monthsInPeriod;
+    const yearlyExpenses = monthlyExpenses * 12;
 
     return {
-        dailyIncome: dailyIncome.toFixed(2),
         dailyExpenses: dailyExpenses.toFixed(2),
-        monthlyIncome: (dailyIncome * 30).toFixed(2),
-        monthlyExpenses: (dailyExpenses * 30).toFixed(2),
-        yearlyIncome: (dailyIncome * 365).toFixed(2),
-        yearlyExpenses: (dailyExpenses * 365).toFixed(2),
+        monthlyExpenses: monthlyExpenses.toFixed(2),
+        yearlyExpenses: yearlyExpenses.toFixed(2),
     };
 }
 
-function openModal() {
-    const totalIncome = parseFloat(document.querySelector('.income').innerText.replace('$', ''));
-    const totalExpenses = parseFloat(document.querySelector('.expenses').innerText.replace('$', ''));
-    const averages = calculateAverages(totalIncome, totalExpenses, 30);
+function addExpense(expense) {
 
-    document.getElementById('daily-average').innerText = `Daily Average: Income $${averages.dailyIncome}, Expenses $${averages.dailyExpenses}`;
-    document.getElementById('monthly-average').innerText = `Monthly Average: Income $${averages.monthlyIncome}, Expenses $${averages.monthlyExpenses}`;
-    document.getElementById('yearly-average').innerText = `Yearly Average: Income $${averages.yearlyIncome}, Expenses $${averages.yearlyExpenses}`;
+    totalExpenses += expense;
+
+    
+    const averages = calculateExpenseAverages(totalExpenses);
+    
+    console.log("Updated Averages:", averages);
+}
+
+function openModal() {
+    const totalExpenses = parseFloat(document.querySelector('.expenses').innerText.replace('$', ''));
+    const averages = calculateExpenseAverages(totalExpenses);
+
+    document.getElementById('daily-average').innerText = `Daily Average: Expenses $${averages.dailyExpenses}`;
+    document.getElementById('monthly-average').innerText = `Monthly Average: Expenses $${averages.monthlyExpenses}`;
+    document.getElementById('yearly-average').innerText = `Yearly Average: Expenses $${averages.yearlyExpenses}`;
 
     document.getElementById('averageModal').style.display = 'flex';
 }

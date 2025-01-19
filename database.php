@@ -11,3 +11,4 @@ if($conn) {
 else {
     echo "Could not connect to database";
 }
+?>
