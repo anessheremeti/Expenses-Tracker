@@ -1,16 +1,15 @@
-
 let totalExpenses = 0;
 
 
-const startDate = new Date(); 
+const startDate = new Date();
 
 function calculateExpenseAverages(totalExpenses) {
     const current = new Date();
-    const currentMonth = current.getMonth(); 
+    const currentMonth = current.getMonth();
     const currentYear = current.getFullYear();
 
-    const monthsInPeriod = (currentYear - startDate.getFullYear()) * 12 
-        + (currentMonth - startDate.getMonth() + 1);
+    const monthsInPeriod = (currentYear - startDate.getFullYear()) * 12 +
+        (currentMonth - startDate.getMonth() + 1);
 
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
@@ -29,9 +28,9 @@ function addExpense(expense) {
 
     totalExpenses += expense;
 
-    
+
     const averages = calculateExpenseAverages(totalExpenses);
-    
+
     console.log("Updated Averages:", averages);
 }
 
