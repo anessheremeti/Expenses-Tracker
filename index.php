@@ -19,7 +19,7 @@
             <img class="logo" src="./assets/img/logoo.png" />
             <div class="item_container">
 
-                <a href="/index.php">
+                <a href="./index.php">
                     <li>Home</li>
                 </a>
                 <a href="./About0us/About-Us.php">

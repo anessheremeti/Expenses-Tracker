@@ -232,7 +232,7 @@ i{
   background: #cc0000;
 }
 
-@media(max-width:350gipx){
+@media(max-width:350px){
   .leftcontener{
       display: none;
       transition: ease 250ms;

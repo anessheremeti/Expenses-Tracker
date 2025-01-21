@@ -6,12 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expenses Tracker - LOGIN</title>
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" type="text/css" href="./login.css" media="all" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-
+    <a href="../index.php">
+            <button class="btn"><i class="fas fa-arrow-left"></i></button>
+        </a>
         <header>
             <h1 class="label">Log In</h1>
         </header>

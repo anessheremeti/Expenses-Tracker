@@ -14,7 +14,7 @@ $queryForItemDelete = mysqli_query($conn, $query);
 if ($queryForItemDelete) {
     while ($row = mysqli_fetch_assoc($queryForItemDelete)) {
         $itemID = $row['ItemID'];
-        echo "Item ID: " . htmlspecialchars($itemID) . "<br>";
+     //   echo "Item ID: " . htmlspecialchars($itemID) . "<br>";
     }
 } else {
     echo "Error executing query: " . mysqli_error($con);
@@ -26,10 +26,10 @@ if (isset($_GET["deleteid"])) {
     $id = $_GET["deleteid"];
 
     $itemDelete = "delete from `items` where ItemID =  $id";
-    echo $itemDelete;
+  //  echo $itemDelete;
     $rez = mysqli_query($conn, $itemDelete);
     if ($rez) {
-        echo "Deleted successfully";
+        //echo "Deleted successfully";
     } else {
         die(mysqli_error($conn));
     }
