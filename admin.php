@@ -17,6 +17,12 @@ if (isset($_GET['delete_id'])) {
     $user = $result->fetch_assoc();
     $stmt->close();
 }
+if (isset($_POST['Log_Out'])) {
+    session_unset();
+    session_destroy();
+    header("Location: /Expenses-Tracker/index.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +30,7 @@ if (isset($_GET['delete_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="./admin.css">
     <title>Admin Panel</title>
 </head>
 <body>
@@ -65,7 +71,11 @@ if (isset($_GET['delete_id'])) {
     ?>
 
 </div>
-
+<div class="action-buttons">
+                   <form  method="post">
+                   <button class="danger" type="submit" name="Log_Out">Log Out</button>
+                   </form>          
+</div>
 <?php if (isset($deleteId) && $user): ?>
 <div class="alert-box" style="display: block;">
     <h3>Are you sure you want to delete the user?</h3>

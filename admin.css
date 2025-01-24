@@ -50,7 +50,32 @@ h2 {
     pointer-events: none;
     opacity: 0.6;
 }
-
+.action-buttons {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.action-buttons  button {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 28px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+  }
+  .action-buttons button:hover {
+    background: #0056b3;
+  }
+  .action-buttons .danger {
+    background: #ff4d4d;
+  }
+  .action-buttons .danger:hover {
+    background: #cc0000;
+  }
 .alert-box {
     position: fixed;
     top: 50%;
