@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("signupForm");
-    const email = document.getElementById("email").value;
     const fullNameError = document.getElementById("error");
     const passwordError = document.getElementById("error-1");
-    console.log(email);
+
     form.addEventListener("submit", function(e) {
         e.preventDefault();
 
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fullNameError.textContent = "";
         passwordError.textContent = "";
 
-        email.textContent = "";
+
 
 
         const namePattern = /^[a-zA-Z\s]+$/;
@@ -28,11 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
             fullNameError.textContent = "Full Name cannot contain numbers.";
             isValid = false;
         }
-        if (!(email.endsWith('.com')) || !(email.endsWith('.net'))) {
-            alert("Email should ends with .com or .net.");
-            isValid = false;
-            email = '';
-        }
+
 
 
         if (password !== confirmPassword) {

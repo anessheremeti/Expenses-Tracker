@@ -100,25 +100,24 @@ document.addEventListener("DOMContentLoaded", function() {
             isValid = false;
         }
 
-        // Nëse validimi është në rregull, dërgo formën
         if (isValid) {
             alert("Të dhënat u shtuan me sukses!");
-            addfundsform.submit(); // Dërgon formën manualisht
+            addfundsform.submit();
         }
     });
     WithdrawForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Parandalon sjelljen default të formës
+        e.preventDefault();
         isSubmited = true;
 
-        const amount = document.getElementById("amaunt-input").value; // Merr vlerën e shumës
+        const amount = document.getElementById("amaunt-input").value;
         console.log(amount);
-        const description = document.getElementById("Description-input").value.trim(); // Merr vlerën e burimit
+        const description = document.getElementById("Description-input").value.trim();
         console.log(description);
-        const config = addfundsform.elements["conf-input"]; // Merr vlerën e konfigurimit
+        const config = addfundsform.elements["conf-input"];
 
-        let isValid = true; // Flamuri që tregon nëse forma është valide
+        let isValid = true;
 
-        // Validim për shumën më të madhe se 7 karaktere
+
         if (amount > 99999) {
             alert("Gabim: Shuma nuk duhet të jetë më shumë se 7 karaktere!");
             isValid = false;
@@ -130,10 +129,10 @@ document.addEventListener("DOMContentLoaded", function() {
             isValid = false;
         }
 
-        // Nëse validimi është në rregull, dërgo formën
+
         if (isValid) {
             alert("Të dhënat u shtuan me sukses!");
-            WithdrawForm.submit(); // Dërgon formën manualisht
+            WithdrawForm.submit();
         }
     });
     const hamburgerlogo = document.getElementById('hamburgerlogo');
