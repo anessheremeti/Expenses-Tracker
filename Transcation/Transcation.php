@@ -2,38 +2,43 @@
 include '../database.php';
 session_start();
 
-if (isset($_COOKIE["remembered_username"])) {
-    $cookieUsername = mysqli_real_escape_string($conn, strtolower(trim($_COOKIE["remembered_username"])));
+if (isset($_COOKIE["user_id"])) {
+    $cookieUsername = mysqli_real_escape_string($conn, $_COOKIE["user_id"]);
 } else {
     die("User is not logged in.");
 }
-$userId = $_SESSION['id'];
+
+$userId = $_SESSION['id']; 
+
+
+if (!is_numeric($userId)) {
+    die("Invalid user ID.");
+}
+
+
 $query = "SELECT ItemID FROM items";
 $queryForItemDelete = mysqli_query($conn, $query);
 
 if ($queryForItemDelete) {
     while ($row = mysqli_fetch_assoc($queryForItemDelete)) {
         $itemID = $row['ItemID'];
-     //   echo "Item ID: " . htmlspecialchars($itemID) . "<br>";
     }
 } else {
-    echo "Error executing query: " . mysqli_error($con);
+    echo "Error executing query: " . mysqli_error($conn);
 }
-
-
 
 if (isset($_GET["deleteid"])) {
     $id = $_GET["deleteid"];
-
-    $itemDelete = "delete from `items` where ItemID =  $id";
-  //  echo $itemDelete;
+    $itemDelete = "DELETE FROM `items` WHERE ItemID = $id";
     $rez = mysqli_query($conn, $itemDelete);
-    if ($rez) {
-        //echo "Deleted successfully";
-    } else {
+    if (!$rez) {
         die(mysqli_error($conn));
     }
+    
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit();
 }
+
 $transactionQuery = "
     (SELECT 
         users.id,
@@ -50,7 +55,7 @@ $transactionQuery = "
     LEFT JOIN 
         items ON users.id = items.user
     WHERE 
-        LOWER(users.name) = LOWER('$cookieUsername'))
+        users.id = $userId)
     
     UNION ALL
     
@@ -69,10 +74,10 @@ $transactionQuery = "
     LEFT JOIN 
         budget ON users.id = budget.user
     WHERE 
-        LOWER(users.name) = LOWER('$cookieUsername'))
+        users.id = $userId)
 ";
 
-
+// Execute the transaction query
 $result = mysqli_query($conn, $transactionQuery);
 if (!$result) {
     die("Query failed: " . mysqli_error($conn));
@@ -133,57 +138,44 @@ if (!$result) {
                             <th>Date</th>
                             <th>Description</th>
                             <th>Amount</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                    <tbody>
                         <?php while ($row = mysqli_fetch_assoc($result)): ?>
                             <tr data-transaction-id="<?php echo htmlspecialchars($row['id']); ?>">
-                                <!-- Displaying the transaction date -->
                                 <td><?= htmlspecialchars($row['transaction_date'] ?? $row['budget_date']); ?></td>
-
 
                                 <td>
                                     <?php
                                     if ($row['transaction_type'] == 'fund' && !empty($row['budget_source'])) {
-
                                         echo htmlspecialchars($row['budget_source']);
                                     } elseif ($row['transaction_type'] == 'expense' && !empty($row['transaction_description'])) {
-
                                         echo htmlspecialchars($row['transaction_description']);
                                     }
                                     ?>
                                 </td>
 
-
                                 <td>
                                     <?php
                                     if ($row['transaction_type'] == 'fund' && isset($row['budget_amount']) && $row['budget_amount'] > 0) {
-                                        echo '+' . htmlspecialchars($row['budget_amount']) . " $</span>";
+                                        echo '+' . htmlspecialchars($row['budget_amount']) . " $";
                                     } elseif ($row['transaction_type'] == 'expense' && isset($row['transaction_amount'])) {
-                                        // Displaying amount for expenses
                                         echo '-' . htmlspecialchars($row['transaction_amount']) . " $";
                                         echo '
                                             <form method="GET" style="display:inline;">
                                             <input type="hidden" name="deleteid" value="' . $itemID . '">
-                                              <button  class="btn">Delete</button>
+                                              <button class="btn">Delete</button>
                                                 </form>';
                                     }
                                     ?>
-
                                 </td>
                             </tr>
                         <?php endwhile; ?>
-
-                    </tbody>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

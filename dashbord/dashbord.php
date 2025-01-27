@@ -156,18 +156,18 @@ if (isset($_POST["addItem"])) {
                             $expenses = 0;
                             $balance = 0;
                            
-                            if (isset($_COOKIE["remembered_username"])) {
-                                $cookieUsername = htmlspecialchars($_COOKIE["remembered_username"]);
+                            if (isset($_COOKIE["user_id"])) {
+                                $cookieUsername = htmlspecialchars($_COOKIE["user_id"]);
 
                                 // Fetch budget prej databazes
                                 while ($row = mysqli_fetch_assoc($budgetResult)) {
-                                    $dbName = trim(strtolower($row['name']));
+                                    $userID = trim(strtolower($row['id']));
                                     $cookieName = trim(strtolower($cookieUsername));
 
-                                    if ($dbName === $cookieName) {
+                                    if ($userID=== $cookieName) {
                                         $income += $row['totalBudget'];
                                         $budgets[$row['id']] = [
-                                            'name' => $row['name'],
+                                            'id' => $row['id'],
                                             'totalBudget' => $row['totalBudget']
                                         ];
                                     }
@@ -176,10 +176,10 @@ if (isset($_POST["addItem"])) {
                                 mysqli_data_seek($itemResult, 0);
 
                                while ($row = mysqli_fetch_assoc($itemResult)) {
-                                    $dbName = trim(strtolower($row['name']));
+                                $userID = trim(strtolower($row['id']));
                                     $cookieName = trim(strtolower($cookieUsername));
 
-                                    if ($dbName === $cookieName) {
+                                    if ($userID === $cookieName) {
                                         $expenses += $row['itemPrice'];
                                     }
                                 }
@@ -217,18 +217,18 @@ if (isset($_POST["addItem"])) {
                             $budgets = []; 
 
                      
-                            if (isset($_COOKIE["remembered_username"])) {
-                                $cookieUsername = htmlspecialchars($_COOKIE["remembered_username"]);
+                            if (isset($_COOKIE["user_id"])) {
+                                $cookieUsername = htmlspecialchars($_COOKIE["user_id"]);
 
                               
                                 while ($row = mysqli_fetch_assoc($budgetResult)) {
-                                    $dbName = trim(strtolower($row['name']));
+                                    $userID = trim(strtolower($row['id']));
                                     $cookieName = trim(strtolower($cookieUsername));
 
-                                    if ($dbName === $cookieName) {
+                                    if ($userID === $cookieName) {
                                         $income += $row['totalBudget'];
                                         $budgets[$row['id']] = [
-                                            'name' => $row['name'],
+                                            'id' => $row['id'],
                                             'totalBudget' => $row['totalBudget']
                                         ];
                                     }
@@ -238,10 +238,10 @@ if (isset($_POST["addItem"])) {
 
                              
                                 while ($row = mysqli_fetch_assoc($itemResult)) {
-                                    $dbName = trim(strtolower($row['name']));
+                                    $userID = trim(strtolower($row['id']));
                                     $cookieName = trim(strtolower($cookieUsername));
 
-                                    if ($dbName === $cookieName) {
+                                    if ($userID === $cookieName) {
                                         $expenses += $row['itemPrice'];
                                     }
                                 }
@@ -279,19 +279,19 @@ if (isset($_POST["addItem"])) {
                             
 
                             
-                            if (isset($_COOKIE["remembered_username"])) {
-                                $cookieUsername = htmlspecialchars($_COOKIE["remembered_username"]);
+                            if (isset($_COOKIE["user_id"])) {
+                                $cookieUsername = htmlspecialchars($_COOKIE["user_id"]);
 
                               
                                 while ($row = mysqli_fetch_assoc($budgetResult)) {
-                                    $dbName = trim(strtolower($row['name']));
+                                    $userID = trim(strtolower($row['id']));
                                     $cookieName = trim(strtolower($cookieUsername));
 
                                     
-                                    if ($dbName === $cookieName) {
+                                    if ($userID === $cookieName) {
                                         $income += $row['totalBudget'];
                                         $budgets[$row['id']] = [
-                                            'name' => $row['name'],
+                                            'id' => $row['id'],
                                             'totalBudget' => $row['totalBudget']
                                         ];
                                     }
@@ -301,11 +301,11 @@ if (isset($_POST["addItem"])) {
 
                                 
                                 while ($row = mysqli_fetch_assoc($itemResult)) {
-                                    $dbName = trim(strtolower($row['name']));
+                                    $userID = trim(strtolower($row['id']));
                                     $cookieName = trim(strtolower($cookieUsername));
 
                                    
-                                    if ($dbName === $cookieName) {
+                                    if ($userID === $cookieName) {
                                         $expenses += $row['itemPrice'];
                                     }
                                 }
