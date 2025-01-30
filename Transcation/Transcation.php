@@ -99,8 +99,8 @@ if (!$result) {
     <div class="contener">
         <div class="leftcontener">
             <div class="leftcontener-content">
-                <div class="leftcontener-llogoja">
-                    <img src="https://images.unsplash.com/photo-1535117423468-de0ff056882e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aXNsYW18ZW58MHwxfDB8fHww" alt="">
+            <div class="leftcontener-llogoja">
+                    <img src="../assets/img/logoo.png" alt="">
                 </div>
                 <a href="../profile/profile.php" class="link">
                     <div class="leftcontener-Profili">
@@ -129,7 +129,7 @@ if (!$result) {
                     <img src="https://images.unsplash.com/photo-1535117423468-de0ff056882e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aXNsYW18ZW58MHwxfDB8fHww" alt="">
                 </div>
             </div>
-        </div>
+        </div> 
         <div class="table-container">
             <div class="table-scroll">
                 <table>

@@ -49,6 +49,7 @@ if (isset($_POST['Log_Out'])) {
                     <th>Username</th>
                     <th>Email</th>
                     <th>Fullname</th>
+                    <th>First Logged In</th>
                     <th>Action</th>
                     <th></th>
                 </tr>";
@@ -58,6 +59,8 @@ if (isset($_POST['Log_Out'])) {
                     <td>" . $row['name'] . "</td>
                     <td>" . $row['email'] . "</td>
                     <td>" . $row['fullname'] . "</td>
+                    <td>" . $row['first_login'] . "</td>
+
                     <td><a href='edit.php?id=" . $row['id'] . "'>Edit</a></td>
                     <td><a href='admin.php?delete_id=" . $row['id'] . "'>Delete</a></td>
                   </tr>";

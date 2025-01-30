@@ -100,7 +100,7 @@ if (isset($_POST["addItem"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stiliD.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Expenses Tracker - Dashboard</title>
 </head>
 
 <body>
@@ -382,16 +382,21 @@ if (isset($_POST["addItem"])) {
         </div>
 
         <div class="hamburger-contener" id="hamburger-contener">
+            <a href="../profile/profile.php">
             <div class="hamburger-contener-Profili">
                 <i class="fa-solid fa-x" id="hamburger-contener-delet"></i>
                 <i class="fas fa-user"></i><span>Profile</span>
             </div>
+            </a>
+
             <div class="hamburger-contener-Boxheti">
                 <i class="fas fa-wallet"></i><span>wallet</span>
             </div>
+            <a href="../Transcation/Transcation.php">
             <div class="hamburger-contener-transactionet">
                 <i class="fas fa-exchange-alt"></i><span>Transactions</span>
             </div>
+            </a>
             <div class="hamburger-contener-raporti">
                 <i class="fas fa-chart-line"></i><span>Report</span>
             </div>

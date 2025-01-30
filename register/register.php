@@ -22,7 +22,7 @@ if (isset($_POST['signUP'])) {
                         VALUES ('$fulltName', '$userName', '$email', '$hashedPassword')";
 
         if ($conn->query($insertQuery) == TRUE) {
-            header("Location: /Expenses-Tracker/dashbord/dashbord.php");
+            header("Location: /Expenses-Tracker/log-in/login.php");
             exit();
         } else {
             echo "Error: " . $conn->error;

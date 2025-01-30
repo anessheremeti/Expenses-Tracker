@@ -43,7 +43,8 @@ html,body{
   width: 4rem;
   border: none;
   border-radius: 50%;
-  object-fit: cover; 
+  object-fit: cover;
+  mix-blend-mode: color-burn; 
   transition: ease 250ms;   
 }
 .leftcontener-Profili{
@@ -110,10 +111,14 @@ html,body{
   transition: ease 250ms;
 }
 i{
-  color: black;
+  color: white;
   float: left;
   padding: 0.5rem;
 
+}
+
+.leftcontener-Profili:hover i,.leftcontener-Boxheti:hover i,.leftcontener-transactionet:hover i,.leftcontener-raporti:hover i{
+  color: #064789;
 }
 @media(max-width:1024px){
   .leftcontener{
@@ -247,6 +252,11 @@ i{
       background-color: #064789;
       transition: ease 250ms;
   }
+  .uperrbar i{
+    color: white;
+    padding:5px;
+    width: 30px;
+}
   .logoja{
       display: flex;
       justify-content: end;
@@ -258,11 +268,11 @@ i{
       height: 2rem;
       width: 2rem;
       border: none;
-      margin-right: 5px;
+      margin-right: 280px;
       border-radius: 50%;
       object-fit: cover; 
       transition: ease 250ms;
   }
-  
+ 
 
 }

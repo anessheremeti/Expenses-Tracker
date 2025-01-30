@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Features</title>
+    <title>Expenses Tracker - Features</title>
     <link rel="stylesheet" href="./features.css">
 </head>
 
 <body>
     <div class="container">
         <div class="upper_content">
+        <img class="logo" src="../assets/img/logoo.png" />
             <div class="item_container">
                 <a href="../index.php">
                     <li>Home</li>
@@ -61,8 +62,8 @@
 
         <div class="main ">
             <div class="main-content ">
-                <div class="title ">
-                    <h1>Expenses Tracker is your companion for managing finances efficiently. Track spending, set budgets, and achieve financial goals easy!</h1>
+                <div class="text ">
+                    <h2>Expenses Tracker is your companion for managing finances efficiently. <br> Track spending, set budgets, and achieve financial goals easy!</h2>
                 </div>
             </div>
         </div>
@@ -115,7 +116,7 @@
         </div>
 
         <div class="footer ">
-            <p><span>© Copyright Expenses Tracker </span> </p>
+            <p><span>&copy Expenses Tracker 2025 </span> </p>
         </div>
         <script src="./features.js "></script>
 </body>

@@ -35,9 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         onClickHandler(sideBar)
     })
 
-    //Pjesa e formes
     form.addEventListener("submit", function(event) {
-       // event.preventDefault();
         let isFormValid = true;
 
 
@@ -61,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
          if (isFormValid) {
             alert("Your message was submitted successfully!");
            console.log(window.location)
-        //     window.location.href = "../";
+  
         }
 
     });
