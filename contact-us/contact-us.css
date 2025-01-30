@@ -34,20 +34,54 @@ body {
     display:flex;
     gap:1.5rem;
      margin:auto;
-     padding-top:0.6rem;
-     padding-bottom:1rem;
+     padding-top:1rem;
+     padding-bottom:5rem;
      align-items:center;
      justify-content:center;
  }
  .item_container a{
     text-decoration:none;
  }
+ 
   img {
     position:absolute;
     left:3.2%;
     top:1.2%;
     width: min(100%, 3rem);
  }
+ .login_and_signUp{
+    position: absolute;
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    top:0.5rem;
+    right:2.5%;
+}
+.login_and_signUp button {
+    text-transform: uppercase;
+    padding:0.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(6, 71, 137);
+    color: rgb(235, 242, 250);
+}
+.login_and_signUp button:hover {
+    cursor: pointer;
+}
+
+.login_and_signUp > button:hover {
+    background-color: rgb(235, 242, 250);
+    color:  rgb(6, 71, 137);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.login_and_signUp > button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
  .burger_menu{
     display: none;
  }

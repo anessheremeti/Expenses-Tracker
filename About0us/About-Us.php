@@ -5,30 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stilizimi-About-Us.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-
-
-    <style>
-        img{
-            display: flex;
-            position: absolute;
-            top:0;
-            right: 0;
-            padding-right: 10px;
-            padding-top: 10px;
-            height: 3rem;
-            width: 3rem;
-        }
-    </style>
-    <title>Document</title>
+    
+    <title>Expenses Tracker - About Us</title>
 </head>
 <body>
     <div>
-    <!-- PJESA ESHTUAR -->
         <a href="../index.php">
             <button><i class="fas fa-arrow-left"></i></button>
         </a>
-        <img src="../assets/img/logoo.png" alt="">
+   
         <div class="Abuat-us" ><h1>About Us</h1>
         </div>
         <div style="display: flex; justify-content: center;">
@@ -36,7 +21,7 @@
         <ol>
             <div>
                 <li>
-                    <h2>Program Purpos</h2>
+                    <h2>Program Purpose</h2>
                     <ul>
                         <li>
                             <p>  Welcome to Expense Tracker,

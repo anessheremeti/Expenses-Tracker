@@ -1,29 +1,27 @@
 <?php
-// Activate sessions
+
 session_start();
 
-// Include database connection
-include('../database.php'); // Update path based on your file structure
+include('../database.php'); 
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addContactInfoForm'])) {
-    // Retrieve user inputs
+
     $fullName = trim($_POST['Full_name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
     if (!empty($fullName) && !empty($email) && !empty($message)) {
         try {
-            // Prepare the query with placeholders
-            $query = "INSERT INTO contact (FullName, Email, `Message`) VALUES (:fullName, :email, :message)";
-            $stmt = $conn->prepare($query);
+           
+$query = "INSERT INTO contact (FullName, Email, Message) VALUES (?, ?, ?)";
+$stmt = mysqli_prepare($conn, $query);
 
-            // Bind parameters
-            $stmt->bindParam(':fullName', $fullName);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':message', $message);
 
-            // Execute the query
+mysqli_stmt_bind_param($stmt, "sss", $fullName, $email, $message);
+
+
+
+
             if ($stmt->execute()) {
                 $thankYouMessage = "Thank you for your message!";
                 header("Location: /Expenses-Tracker/index.php?success=true&message=" . urlencode($thankYouMessage));
@@ -32,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addContactInfoForm']))
                 echo "<script>alert('Error executing query.');</script>";
             }
         } catch (PDOException $e) {
-            // Handle errors
             echo "<script>alert('Database error: " . $e->getMessage() . "');</script>";
         }
     } else {
@@ -76,11 +73,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addContactInfoForm']))
             <img class="logo" src="../assets/img/logoo.png" />
             
 
+            
+
 
             <div class="sidebar_item_container">
                 <div class="sidebar_content">
 
-                    <a href="/index.php">
+                    <a href="../index.php">
                         <li>Home</li>
                     </a>
                     <a href="./About0us/About-Us.php">
@@ -99,6 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['addContactInfoForm']))
                     </div>
                 </div>
             </div>
+            
     
     <div class="container">
         <header>

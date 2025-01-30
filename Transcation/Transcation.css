@@ -148,8 +148,9 @@ td:nth-child(3).negative {
   width: 4rem;
   border: none;
   border-radius: 50%;
-  object-fit: cover; 
-  transition: ease 250ms;   
+  object-fit: cover;
+  mix-blend-mode: color-burn; 
+  transition: ease 250ms;  
 }
 .leftcontener-Profili{
   display: flex;
@@ -214,10 +215,13 @@ cursor: pointer;
   transition: ease 250ms;
 }
 i{
-  color: black;
+  color: white;
   float: left;
   padding: 0.5rem;
 
+}
+.leftcontener-Profili:hover i,.leftcontener-Boxheti:hover i,.leftcontener-transactionet:hover i,.leftcontener-raporti:hover i{
+  color: #064789;
 }
 @media(max-width:1024px){
   .leftcontener{
@@ -291,8 +295,6 @@ i{
       object-fit: cover; 
       transition: ease 250ms;
   }
-
-  
 
   
 

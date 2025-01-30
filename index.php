@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="stili.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expenses tracker</title>
+    <title>Expenses Tracker</title>
 
     </script>
 </head>
@@ -202,7 +202,7 @@
         </div>
         <!--Footeri-->
         <div class="footer">
-            <p><span>© Copyright Expenses Tracker </span> </p>
+            <p><span>&copy Expenses Tracker 2025 </span> </p>
         </div>
     </div>
     <script src="./index.js"></script>
