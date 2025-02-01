@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const formButonContener = document.getElementById('form-buton-contener');
     const addFondsDelet = document.getElementById('add-funds-delet');
     const outlay = document.getElementById('outlay');
-    //widthdraw
+
     const WithdrawForm = document.getElementById('Withdraw-form');
     const WithdrawContener = document.getElementById('Withdraw-contener');
     const Withdraw = document.getElementById('Withdraw');
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
-    // Hapja e formës //add fonds
+
     Addfonds.addEventListener("click", function() {
         formButonContener.style.display = "flex";
         outlay.style.display = "flex";
@@ -71,22 +71,23 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.classList.remove("blocked");
     });
 
-    // Parandalimi i klikimeve jashtë formës
+
     formButonContener.addEventListener("click", function(e) {
-        e.stopPropagation(); // Parandalon klikimet jashtë container
+        e.stopPropagation();
+        container
     });
 
-    // Event handler për dërgimin e formës
+
     addfundsform.addEventListener('submit', function(e) {
-        e.preventDefault(); // Parandalon sjelljen default të formës
+        e.preventDefault();
 
-        const amount = addfundsform.elements["amaunt-input"].value; // Merr vlerën e shumës
-        const source = addfundsform.elements["sourece-input"].value.trim(); // Merr vlerën e burimit
-        const config = addfundsform.elements["conf-input"]; // Merr vlerën e konfigurimit
+        const amount = addfundsform.elements["amaunt-input"].value;
+        const source = addfundsform.elements["sourece-input"].value.trim();
+        const config = addfundsform.elements["conf-input"];
 
-        let isValid = true; // Flamuri që tregon nëse forma është valide
+        let isValid = true;
 
-        // Validim për shumën më të madhe se 7 karaktere
+
         if (amount > 99999) {
             alert("Gabim: Shuma nuk duhet të jetë më shumë se 7 karaktere!");
             isValid = false;
