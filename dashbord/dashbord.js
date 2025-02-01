@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (isValid) {
             alert("Të dhënat u shtuan me sukses!");
-            WithdrawForm.submit(); // Dërgon formën manualisht
+            WithdrawForm.submit();
         }
     });
     if (isSubmited) {

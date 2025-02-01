@@ -74,7 +74,7 @@ if (isset($_POST['Log_Out'])) {
     session_unset();
     session_destroy();
 
-    // Ensure session cookie is removed
+    
     if (ini_get("session.use_cookies")) {
         $params = session_get_cookie_params();
         setcookie(session_name(), '', time() - 42000,
