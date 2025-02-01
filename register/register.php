@@ -19,7 +19,7 @@ if (isset($_POST['signUP'])) {
         echo "aaaaaaaaaaaaa";
 
         $insertQuery = "INSERT INTO users (fullname, `name`, email, `password`, `role`)
-                        VALUES ('$fulltName', '$userName', '$email', '$hashedPassword', 0)"; // Default role = 0 (normal user)
+                        VALUES ('$fulltName', '$userName', '$email', '$hashedPassword', 0)"; 
 
         if ($conn->query($insertQuery) === TRUE) {
             header("Location: /Expenses-Tracker/log-in/login.php");
@@ -44,15 +44,14 @@ if (isset($_POST['login'])) {
             session_start();
             $_SESSION['id'] = $row['id'];
             $_SESSION['username'] = $row['name'];
-            $_SESSION['role'] = $row['role']; // Store role in session
+            $_SESSION['role'] = $row['role']; 
             setcookie('remembered_username', $row['name'], time() + 36000, "/");
             setcookie('user_id', $row['id'], time() + 36000, "/");
 
             if ($row['role'] == 1) {
-                // Redirect to admin page if role is 1
                 header("Location: /Expenses-Tracker/admin.php");
             } else {
-                // Redirect to user dashboard if role is 0
+                
                 header("Location: /Expenses-Tracker/dashbord/dashbord.php");
             }
             exit();
