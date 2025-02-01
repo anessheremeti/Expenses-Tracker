@@ -42,7 +42,8 @@ form label {
 
 form input[type="text"],
 form input[type="email"],
-form input[type="number"] {
+form input[type="number"]
+form input[type="role"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -50,7 +51,14 @@ form input[type="number"] {
     border-radius: 5px;
     font-size: 14px;
 }
-
+.role {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
 form button {
     width: 100%;
     background-color: #00509E;

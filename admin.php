@@ -60,6 +60,7 @@ if (isset($_POST['Log_Out'])) {
                     <td>" . $row['email'] . "</td>
                     <td>" . $row['fullname'] . "</td>
                     <td>" . $row['first_login'] . "</td>
+                    <td>" . $row['role'] . "</td>
 
                     <td><a href='edit.php?id=" . $row['id'] . "'>Edit</a></td>
                     <td><a href='admin.php?delete_id=" . $row['id'] . "'>Delete</a></td>

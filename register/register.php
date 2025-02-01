@@ -18,10 +18,10 @@ if (isset($_POST['signUP'])) {
     } else {
         echo "aaaaaaaaaaaaa";
 
-        $insertQuery = "INSERT INTO users (fullname, `name`, email, `password`)
-                        VALUES ('$fulltName', '$userName', '$email', '$hashedPassword')";
+        $insertQuery = "INSERT INTO users (fullname, `name`, email, `password`, `role`)
+                        VALUES ('$fulltName', '$userName', '$email', '$hashedPassword', 0)"; // Default role = 0 (normal user)
 
-        if ($conn->query($insertQuery) == TRUE) {
+        if ($conn->query($insertQuery) === TRUE) {
             header("Location: /Expenses-Tracker/log-in/login.php");
             exit();
         } else {
@@ -34,11 +34,6 @@ if (isset($_POST['login'])) {
     $userName = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    if ($userName == 'admin123' && $password == '123456789') {
-        header("Location: /Expenses-Tracker/admin.php");
-        exit();
-    }
-
     $sql = "SELECT * FROM users WHERE name='$userName'";
     $result = $conn->query($sql);
 
@@ -49,10 +44,17 @@ if (isset($_POST['login'])) {
             session_start();
             $_SESSION['id'] = $row['id'];
             $_SESSION['username'] = $row['name'];
+            $_SESSION['role'] = $row['role']; // Store role in session
             setcookie('remembered_username', $row['name'], time() + 36000, "/");
             setcookie('user_id', $row['id'], time() + 36000, "/");
 
-            header("Location: /Expenses-Tracker/dashbord/dashbord.php");
+            if ($row['role'] == 1) {
+                // Redirect to admin page if role is 1
+                header("Location: /Expenses-Tracker/admin.php");
+            } else {
+                // Redirect to user dashboard if role is 0
+                header("Location: /Expenses-Tracker/dashbord/dashbord.php");
+            }
             exit();
         } else {
             echo "Incorrect password!";
