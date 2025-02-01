@@ -7,6 +7,7 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 
+
 $userBudgetQuery = "SELECT users.id, users.fullname, budget.Amount, budget.Source, budget.Confirm, budget.Date
                     FROM users
                     INNER JOIN budget ON users.id = budget.user";
@@ -98,6 +99,9 @@ if (isset($_POST["addItem"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" href="stiliD.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Expenses Tracker - Dashboard</title>
@@ -402,7 +406,13 @@ if (isset($_POST["addItem"])) {
             </div>
         </div>
     </div>
-    <script src="dashbord.js"></script>
+    <script src="dashbord.js">
+           window.history.pushState(null, "", window.location.href);
+window.onpopstate = function() {
+    window.history.pushState(null, "", window.location.href);
+    window.location.href = "./dashbord.php"; // Redirekto në login.php
+};
+    </script>
 </body>
 
 </html>

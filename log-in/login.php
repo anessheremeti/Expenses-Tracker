@@ -5,6 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Expenses Tracker - LOGIN</title>
     <link rel="stylesheet" type="text/css" href="./login.css" media="all" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -38,6 +41,14 @@
         </form>
     </div>
     <script src="login.js"></script> 
+    <script>
+    // Bllokon butonin "Back" dhe i drejton përdoruesin në login page
+    window.history.pushState(null, "", window.location.href);
+window.onpopstate = function() {
+    window.history.pushState(null, "", window.location.href);
+    window.location.href = "./login.php"; // Redirekto në login.php
+};
+</script>
 </body>
 
 </html>

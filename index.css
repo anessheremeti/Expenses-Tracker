@@ -450,4 +450,9 @@ body {
 .slider-nav a:hover{
     opacity: 1;
 }
+@media(max-width:465px){
+    .title > h1{
+        font-size:1.5rem;
+    }
+}
 

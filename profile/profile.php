@@ -1,4 +1,9 @@
 <?php
+// Prevent browser caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 session_start();
 require '../database.php';
 
@@ -24,8 +29,7 @@ if (is_null($firstLoginRow['first_login'])) {
 }
 
 $query = "SELECT users.fullname, users.email, users.name, users.first_login 
-          FROM users
-          WHERE users.name = ?";
+          FROM users WHERE users.name = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $username);
 $stmt->execute();
@@ -48,9 +52,7 @@ $resultUserId = $stmtUserId->get_result();
 $userRow = $resultUserId->fetch_assoc();
 $userId = $userRow['id'];
 
-$incomeQuery = "SELECT SUM(budget.Amount) AS totalIncome 
-                FROM budget 
-                WHERE budget.user = ?";
+$incomeQuery = "SELECT SUM(budget.Amount) AS totalIncome FROM budget WHERE budget.user = ?";
 $stmtIncome = $conn->prepare($incomeQuery);
 $stmtIncome->bind_param("i", $userId);
 $stmtIncome->execute();
@@ -58,9 +60,7 @@ $resultIncome = $stmtIncome->get_result();
 $incomeRow = $resultIncome->fetch_assoc();
 $totalIncome = $incomeRow['totalIncome'] ?? 0;
 
-$expensesQuery = "SELECT SUM(items.Amount) AS totalExpenses 
-                  FROM items 
-                  WHERE items.user = ?";
+$expensesQuery = "SELECT SUM(items.Amount) AS totalExpenses FROM items WHERE items.user = ?";
 $stmtExpenses = $conn->prepare($expensesQuery);
 $stmtExpenses->bind_param("i", $userId);
 $stmtExpenses->execute();
@@ -73,6 +73,15 @@ $currentBalance = $totalIncome - $totalExpenses;
 if (isset($_POST['Log_Out'])) {
     session_unset();
     session_destroy();
+
+    // Ensure session cookie is removed
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
     header("Location: /Expenses-Tracker/index.php");
     exit();
 }
@@ -84,6 +93,9 @@ if (isset($_POST['Log_Out'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" href="profile.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
@@ -91,7 +103,7 @@ if (isset($_POST['Log_Out'])) {
     <div class="contener">
         <div class="leftcontener">
             <div class="leftcontener-content">
-            <div class="leftcontener-llogoja">
+                <div class="leftcontener-llogoja">
                     <img src="../assets/img/logoo.png" alt="">
                 </div>
                 <div class="leftcontener-Profili">
@@ -115,9 +127,7 @@ if (isset($_POST['Log_Out'])) {
             </div>
         </div>
         
-        
         <div class="right-container">
-     
             <div class="rightcontainer-content">
                 <div class="profile-header">
                     <img src="../assets/profile.png" alt="Profile Image">
@@ -134,20 +144,18 @@ if (isset($_POST['Log_Out'])) {
                             <td><input type="email" value="<?php echo htmlspecialchars($user['email']); ?>" disabled></td>
                         </tr>
                         <tr>
-                              <th>Budget:</th>
-                          <td><input type="number" value="<?php echo htmlspecialchars($currentBalance); ?>" disabled></td>
+                            <th>Budget:</th>
+                            <td><input type="number" value="<?php echo htmlspecialchars($currentBalance); ?>" disabled></td>
                         </tr>
-
                         <tr>
                             <th>First Logged In:</th>
                             <td><input type="text" value="<?php echo htmlspecialchars($firstLogin); ?>" disabled></td>
                         </tr>
-
                     </table>
                 </div>
                 <div class="action-buttons">
                     <a href="../edit-profile/edit-profile.php"><button>Edit Profile</button></a>
-                    <form action="" method="post">
+                    <form action="./profile.php" method="post">
                         <button class="danger" type="submit" name="Log_Out">Log Out</button>
                     </form>
                 </div>
@@ -155,11 +163,8 @@ if (isset($_POST['Log_Out'])) {
         </div>
     </div>
     
- 
- 
+    <script>
+        window.history.replaceState({}, document.title, window.location.pathname);
+    </script>
 </body>
-
-
-
-
 </html>

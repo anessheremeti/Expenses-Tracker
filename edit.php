@@ -7,10 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
+    $role = $_POST['role'];
 
-    $updateQuery = "UPDATE users SET name = ?, fullname = ?, email = ? WHERE id = ?";
+    $updateQuery = "UPDATE users SET name = ?, fullname = ?, email = ?,role = ? WHERE id = ?";
     $stmt = $conn->prepare($updateQuery);
-    $stmt->bind_param("sssi", $name, $fullname, $email, $id);
+    $stmt->bind_param("sssii", $name, $fullname, $email, $role,$id);
 
     if ($stmt->execute()) {
         echo "User information updated successfully.";
@@ -63,6 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <label for='email'>Email:</label>
     <input type='email' id='email' name='email' value='<?php echo $user['email']; ?>' required>
+
+    <label for='role'>Role:</label>
+    <input class="role" type='role' id='role' name='role' value='<?php echo $user['role']; ?>' required>
 
     <button type='submit'>Save Changes</button>
 
