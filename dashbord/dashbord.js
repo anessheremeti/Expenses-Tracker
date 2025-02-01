@@ -19,22 +19,21 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.classList.add("blocked");
     });
     WithdrawDelet.addEventListener("click", function() {
-            WithdrawContener.style.display = "none";
-            outlay.style.display = "none";
-            document.body.classList.remove("blocked");
-        })
-        // Event handler për dërgimin e formës
+        WithdrawContener.style.display = "none";
+        outlay.style.display = "none";
+        document.body.classList.remove("blocked");
+    })
     WithdrawForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Parandalon sjelljen default të formës
+        e.preventDefault();
 
-        const amount = document.getElementById("amaunt-input").value; // Merr vlerën e shumës
-        const description = document.getElementById("Description-input").value.trim(); // Merr vlerën e burimit
+        const amount = document.getElementById("amaunt-input").value;
+        const description = document.getElementById("Description-input").value.trim();
 
-        const config = document.getElementById("conf-input"); // Merr vlerën e konfigurimit
+        const config = document.getElementById("conf-input");
 
-        let isValid = true; // Flamuri që tregon nëse forma është valide
+        let isValid = true;
 
-        // Validim për shumën më të madhe se 7 karaktere
+
         if (amount > 99999) {
             alert("Gabim: Shuma nuk duhet të jetë më shumë se 7 karaktere!");
             isValid = false;
