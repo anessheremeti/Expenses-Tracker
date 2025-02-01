@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             isValid = false;
         }
 
-        // Nëse validimi është në rregull, dërgo formën
+
         if (isValid) {
             alert("Të dhënat u shtuan me sukses!");
             WithdrawForm.submit(); // Dërgon formën manualisht
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 
-    // Mbyllja e formës
+
     addFondsDelet.addEventListener("click", function() {
         formButonContener.style.display = "none";
         outlay.style.display = "none";
