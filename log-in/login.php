@@ -42,11 +42,11 @@
     </div>
     <script src="login.js"></script> 
     <script>
-    // Bllokon butonin "Back" dhe i drejton përdoruesin në login page
+    
     window.history.pushState(null, "", window.location.href);
 window.onpopstate = function() {
     window.history.pushState(null, "", window.location.href);
-    window.location.href = "./login.php"; // Redirekto në login.php
+    window.location.href = "./login.php"; 
 };
 </script>
 </body>
