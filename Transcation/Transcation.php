@@ -77,7 +77,6 @@ $transactionQuery = "
         users.id = $userId)
 ";
 
-// Execute the transaction query
 $result = mysqli_query($conn, $transactionQuery);
 if (!$result) {
     die("Query failed: " . mysqli_error($conn));
