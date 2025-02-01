@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Kodi këtu ekzekutohet vetëm pasi të jetë ngarkuar struktura HTML
-    //add fonds
+
     const addfundsform = document.getElementById('add-funds-form');
     const Addfonds = document.getElementById('Addfonds');
     let isSubmited = false;
