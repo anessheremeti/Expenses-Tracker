@@ -1,0 +1,91 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(66, 122, 161) ; 
+    /* background-color: rgb(6, 71, 137); */
+}
+.contener{
+    min-width: 340px;
+    text-align: center;
+    align-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-width: 1px;
+    border-style: solid;
+    background-color: rgb(235, 242, 250);
+    color: rgb(66, 122, 161) ;
+    border-radius: 10px;
+}
+.contener2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+  form{
+    padding: 30px;
+  }
+  input.input{
+    width: 85%;
+    height: 1.8rem;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    border: none;
+    margin-top: 4px;
+    border-radius: 10px;
+    font-size: medium;
+    outline: auto;
+}
+
+ input:not(:placeholder-shown):valid{
+    outline-color: var(--clr-success);
+} 
+input:not(:placeholder-shown):invalid{
+    outline-color: var(--clr-error);
+}
+input:focus:invalid{
+    outline-color: var(--clr-warning);
+}
+:root {
+    --clr-success: green;
+    --clr-error: red;
+    --clr-warning: orange;
+}
+
+.Sign-up-Buton{
+    text-transform: uppercase;
+    width: 70%;
+    padding: 10px;
+    font-size: 15px;
+    color: #fff;
+    background: #064789;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.Sign-up-Buton:hover{
+    background-color: rgb(235, 242, 250);
+    color:  rgb(6, 71, 137);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: 0.4s;
+    cursor: pointer;
+}
+.error{
+    margin-top: 7px;
+    color: red;
+    font-size: 13PX;
+    
+}
+.error-1{
+    margin-top: 7px;
+    color: red;
+    font-size: 13PX;
+    
+}
+
+
+
+

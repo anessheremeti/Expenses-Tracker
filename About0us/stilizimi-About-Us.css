@@ -1,0 +1,39 @@
+
+body{
+    text-wrap: pretty;
+    background-color:rgb(235, 242, 250);
+}
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    position:absolute;
+    top:0;
+    left: 0;
+    border:none;
+    border-radius:0 0 10px 0 ;
+    background-color:rgb(6, 71, 137);
+    color: white
+}
+.Main-conteber{
+    display: flex;
+    background-color: rgb(6, 71, 137);
+    max-width: 90% ;
+    min-width:90% ;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+    border-radius: 20px;
+    color: rgb(235, 242, 250)  ;
+    padding: 3%;
+}
+.Abuat-us{
+    display: flex;
+    justify-content: center;
+    color: rgb(6, 71, 137);
+}
+.link{
+    color: rgb(235, 242, 250) ; 
+}
+ul{
+    list-style: none;
+}

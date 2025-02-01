@@ -4,28 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="index.css">
-    <meta name=" viewport " content="width=device-width, initial-scale=1.0 ">
-    <title>Expenses tracker</title>
+    <link rel="stylesheet" href="stili.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses Tracker</title>
 
     </script>
 </head>
 
 <body>
     <div class="container">
+
         <div class="upper_content">
             <!--Pjesa e Navbar-->
+            <img class="logo" src="./assets/img/logoo.png" />
             <div class="item_container">
 
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Contact us</li>
-                <li>Features</li>
+                <a href="./index.php">
+                    <li>Home</li>
+                </a>
+                <a href="./About0us/About-Us.php">
+                    <li>About us</li>
+                </a>
+                <a href="./contact-us/contact-us.php">
+                    <li>Contact us</li>
+                </a>
 
+                <a href="./features/features.php">
+                    <li>Features</li>
+                </a>
+                <div class="burger_menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+                </div>
             </div>
+
+            <!--Sidebar-->
+            <div class="sidebar_item_container">
+                <div class="sidebar_content">
+
+                    <a href="/index.php">
+                        <li>Home</li>
+                    </a>
+                    <a href="./About0us/About-Us.php">
+                        <li>About Us</li>
+                    </a>
+
+                    <a href="./contact-us/contact-us.php">
+                        <li>Contact us</li>
+                    </a>
+
+                    <a href="./features/features.php">
+                        <li>Features</li>
+                    </a>
+                    <div class="close_button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                    </div>
+                </div>
+            </div>
+
             <!--Log and Sign up Buttons-->
             <div class="login_and_signUp">
-                <button> Log In</button>
-                <button>Sign Up</button>
+                <a href="log-in/login.php">
+                    <button>Log in</button>
+                </a>
+                <a href="./Sing-up/sing-up.php">
+                    <button>Sign Up</button>
+                </a>
             </div>
         </div>
         <!--Pjesa e main contentit -->
@@ -75,6 +118,22 @@
                     </div>
                 </div>
             </div>
+            <section class="contener">
+                <div class="slider-wrapper">
+                    <div class="slider">
+                        <img id="slide-1" src="./assets/img/austin-distel-DfjJMVhwH_8-unsplash.jpg" alt="">
+                        <img id="slide-2" src="./assets/img/towfiqu-barbhuiya-joqWSI9u_XM-unsplash.jpg" alt="">
+                        <img id="slide-3" src="./assets/img/ibrahim-rifath-OApHds2yEGQ-unsplash.jpg" alt="">
+                        <img id="slide-4" src="./assets/img/stephen-dawson-qwtCeJ5cLYs-unsplash.jpg" alt="">
+                    </div>
+                    <div class="slider-nav">
+                        <a href="#slide-1"></a>
+                        <a href="#slide-2"></a>
+                        <a href="#slide-3"></a>
+                        <a href="#slide-4"></a>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!--Why choose us section-->
@@ -139,8 +198,15 @@
                 </div>
 
             </div>
+
         </div>
-        <script src="/index.js"></script>
+        <!--Footeri-->
+        <div class="footer">
+            <p><span>&copy Expenses Tracker 2025 </span> </p>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+
 </body>
 
 </html>

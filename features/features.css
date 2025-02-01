@@ -1,0 +1,360 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    
+}
+.upper_content{
+    background:#427AA1;
+    align-items: center;
+    padding:0.5rem;
+    align-content:center;
+    margin:0 auto;
+    display:flex;
+  
+}
+.upper_content  li {
+    color:#EBF2FA;
+    list-style-type:none;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration: none;
+    
+}
+
+.upper_content  a {
+    list-style-type:none;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration: none;
+    
+}
+.upper_content  img {
+    width: min(100%, 3rem);
+    position: relative;
+    left: 3%;
+}
+
+.item_container{
+   display:flex;
+   gap:1.5rem;
+   position:relative;
+    margin:auto;
+   
+    
+}
+.login_and_signUp{
+    position: absolute;
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    top:0.5rem;
+    right:2.5%;
+}
+.login_and_signUp button {
+    text-transform: uppercase;
+    padding:0.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(6, 71, 137);
+    color: rgb(235, 242, 250);
+}
+.login_and_signUp button:hover {
+    cursor: pointer;
+}
+
+.login_and_signUp > button:hover {
+    background-color: rgb(235, 242, 250);
+    color:  rgb(6, 71, 137);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.login_and_signUp > button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.main{
+    background-repeat: no-repeat;
+    position: absolute; 
+    top: 3.5rem;
+     width: 100%; 
+    background:#033b74;
+    color: white;
+    min-height: 15rem;
+}
+.main-content{
+    margin: 0 auto;
+    text-align: center;
+    padding-block-start:3rem;
+}
+.text h2{
+    color:white;
+    font-family:Arial, Helvetica,sans-serif;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 10rem;
+   
+}
+
+.card-heading{
+    font-size: 2em;
+    color: #033b74;
+    text-align: center;
+    width: 100%;
+    padding-top: 6rem;
+
+}
+.card{
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img{
+    width: 100%;
+    height: auto;
+}
+
+.card-content{
+    padding: 16px;
+}
+
+.card-content h3{
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+.card-content p{
+    color: #427AA1;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+.card-content p:hover{
+    color: #033b74;
+}
+.box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-wrap: wrap;
+    height: 65vh; 
+    background: #4682b4; 
+}
+
+.box-heading{
+    font-size: 2em;
+    color: #ffff;
+    text-align: center;
+    width: 100%;
+
+}
+.box {
+    align-items: center;
+    width: 700px;
+    height: 300px;
+    background: #ffffff;
+    border-radius: 10px; 
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.box ul{
+    position: relative;
+    background: #ffff;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.box ul li{
+    list-style: none;
+    padding: 30px;
+    width: 80%;
+    background: #ffff;
+    box-shadow: 0 5px 25px rgba(0,0,0,.1);
+    transition: transform 0.5s;
+    
+}
+.box ul li:hover{
+    transform: scale(1.1);
+    z-index: 100;
+    background: #4682b4;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #ffff;
+}
+.box ul li span{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    background: #4682b4;
+    color: #ffff;
+    display: inline-block;
+    border-radius: 50% ;
+    margin-right: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    transform: translateY(-20px);
+}
+
+.box ul li:hover span{
+    background: #4682b4;
+    color: #ffff;
+}
+.sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.sign-up-content {
+    max-width: 545px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.h2 h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #033b74;
+    margin-bottom: 15px;
+}
+
+.h2 h2 a {
+    color: #03a9f4;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.h2 h2 a:hover {
+    color: #025a94;
+}
+
+.footer {
+    margin: 0 auto;
+    display: grid;
+    background:#427AA1;
+    color: #ffff;
+    text-align: center;
+  
+}
+.burger_menu{
+    display: none;
+}
+.sidebar_item_container{
+    display: none;
+}
+@media(max-width:720px) {
+    .upper_content{
+        display:flex;
+    }
+    .main {
+        top: initial;
+    }
+   
+    .sidebar_item_container{
+        display:none;
+        flex-direction:column;
+        gap:1.5rem;
+        position:relative;
+         margin:auto;
+         position:fixed;
+         top:0;
+         right:0;
+         background:#064789;         
+     }
+     .sidebar_item_container{
+        height:100%;
+        z-index:999;
+     }
+     .close_button{
+        position: absolute;
+        top: 0.3rem;
+        left: 7%;
+     }
+     .close_button svg{
+        fill:White;
+     }
+     .close_button svg:hover{
+        cursor:pointer;
+     }
+     .sidebar_content li{
+        width:100%;
+        text-align:center;
+        padding-top:0.5rem;
+     }
+     .sidebar_content a{
+        width:100%;
+     }
+     .sidebar_content{
+        padding:1rem;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        margin:0 auto;
+        padding-top:2.4rem;
+     }
+     .homee{
+        position:relative;
+        top:5%;
+     }
+     .sidebar_content > li{
+        padding:1rem;
+       
+       
+     }
+     .sidebar_content > a {
+        padding:0.4rem;
+     }
+    .item_container  li{
+        display:none;
+    }
+    .what_our_user_says_container{
+        display:none;
+    }
+    .burger_menu {
+        display:block;
+        
+       
+    }
+    .item_container{
+        gap:0;
+        position:unset;
+    }
+    .burger_menu svg{
+        float: right;
+        fill: white;
+        position: absolute;
+        right: 2rem;
+        top: 1%;
+    }
+    .login_and_signUp{
+        display:none;
+    }
+}

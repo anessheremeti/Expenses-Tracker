@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #427AA1;;
+}
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.container .btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+    position:absolute;
+    top:0;
+    left: 0;
+    border:none;
+    border-radius:0 0 10px 0 ;
+    background-color:rgb(6, 71, 137);
+    color: white
+}
+#error {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.label {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #427AA1;
+    margin-bottom: 50px;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 0px;
+    
+}
+
+.field input {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.field input:focus {
+    border-color: #427AA1;
+}
+
+.forgot-password {
+    display: flex;
+    padding-bottom:1rem;;
+    float: right;
+}
+
+.forgot-password a {
+    color: #215072;
+    text-decoration: none;
+    font-size: 14px;
+
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+    color: #033b74;
+    
+}
+.button {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 30px;
+    background: #427AA1;
+    border: none;
+    cursor: pointer;
+    box-shadow: 6px 19px 15px -2px rgba(47, 86, 113, 0.24)
+}
+.button:hover {
+    background-color: #355c7d;
+
+}
+.signup-text-button {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signup-text-button a {
+    color: #064789;
+    text-decoration: none;
+}
+.signup-text-button a:hover {
+    text-decoration: underline;
+    color: #064789;
+    
+}
+
+@media (max-width: 768px) {
+    .container{
+        flex-direction: column;
+        align-items: flex-start;
+        width: 300px;
+    }
+}
